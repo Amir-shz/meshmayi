@@ -4,9 +4,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import { NextSliderButton, PrevSliderButton } from "@/components/SliderButton";
+import Image from "next/image";
 // import SliderItem from "./SliderItem";
 
-function Slider() {
+interface sliderProps {
+  pictures: { _id: string; src: string }[];
+}
+
+function Slider({ pictures }: sliderProps) {
   return (
     <>
       <Swiper
@@ -14,7 +19,7 @@ function Slider() {
         spaceBetween={0}
         grabCursor={true}
         centeredSlides={true}
-        loop={true}
+        loop={false}
         // autoplay={{
         //   delay: 4000,
         //   disableOnInteraction: false,
@@ -28,21 +33,24 @@ function Slider() {
         modules={[Autoplay, Pagination, Navigation]}
         className=" relative z-50 mx-auto h-full w-full overflow-hidden"
       >
-        {/* {data.map((item) => ( */}
-        <SwiperSlide className=" h-auto bg-slate-300">
-          <p>slide1</p>
-        </SwiperSlide>
+        {pictures.map((picture) => (
+          <SwiperSlide key={picture._id} className=" h-auto">
+            <Image
+              src={picture.src}
+              alt="car"
+              width={250}
+              height={250}
+              className=" object-cover object-center w-full"
+            />
+          </SwiperSlide>
+        ))}
 
-        <SwiperSlide className=" h-auto bg-slate-300">
-          <p>slide2</p>
-        </SwiperSlide>
-
-        <SwiperSlide className=" h-auto bg-slate-300">
-          <p>slide3</p>
-        </SwiperSlide>
-        {/* ))} */}
-        <NextSliderButton />
-        <PrevSliderButton />
+        {pictures.length > 1 && (
+          <>
+            <NextSliderButton />
+            <PrevSliderButton />
+          </>
+        )}
       </Swiper>
     </>
   );
