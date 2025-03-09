@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 function LoginPage() {
   return (
     <div className=" col-start-4 col-end-10 self-center">
-      <LoginForm />;
+      <LoginForm />
     </div>
   );
 }
