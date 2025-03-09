@@ -3,7 +3,7 @@
 import { ReactNode } from "react";
 
 interface buttonProps {
-  type?: "filled" | "outline" | "text";
+  type?: "filled" | "outline" | "text" | "delete";
   size?: "small" | "big" | "Xbig";
   disabled?: boolean;
   fullWidth?: boolean;
@@ -40,6 +40,10 @@ function Button({
         ${
           type === "text" &&
           "hover:bg-primary-50 active:bg-primary-200 text-primary-500 disabled:border-neutral-300 disabled:bg-white disabled:text-neutral-300"
+        }
+        ${
+          type === "delete" &&
+          " border border-red-500 text-red-500 hover:bg-red-50 disabled:border-neutral-300 disabled:bg-white disabled:text-neutral-300"
         }
         ${
           size === "small" &&
