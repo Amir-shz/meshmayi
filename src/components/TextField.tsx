@@ -36,7 +36,7 @@ function TextField({
         id={id}
         placeholder={placeholder}
         disabled={disabled}
-        className={`mt-2 mb-1 rounded-lg border hover:border-primary-500 focus:outline-none focus:border-primary-500 bg-neutral-50 text-neutral-600
+        className={`mt-2 mb-1 rounded-lg border hover:border-primary-500 focus:outline-none focus:border-primary-500 bg-neutral-50 text-neutral-600 duration-300
           ${
             disabled
               ? " border-neutral-300 hover:border-neutral-300 "
@@ -54,9 +54,10 @@ function TextField({
         ${size === "small" && "text-p4_R_desktop"}
         ${size === "mobile" && "text-lb2_mobile"}
         ${size === "big" && "text-p4_R_desktop"}
+        ${error ? " visible" : "invisible"}
         `}
       >
-        {error}
+        {error ? error : "متن پیشفرض"}
       </p>
     </label>
   );

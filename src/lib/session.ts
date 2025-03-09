@@ -1,20 +1,28 @@
 import "server-only";
 
 import { cookies } from "next/headers";
-import jwt from "jsonwebtoken";
+import { jwtVerify, SignJWT } from "jose";
+import { redirect } from "next/navigation";
+
+const secretKey = process.env.JWT_SECRET;
+const encodedKey = new TextEncoder().encode(secretKey);
 
 // ENCRYPT SESSION (JWT)
-export async function encrypt(payload: object) {
-  return jwt.sign(payload, process.env.JWT_SECRET!, {
-    expiresIn: process.env.JWT_EXPIRES_IN!,
-  } as jwt.SignOptions);
+export async function encrypt(payload: { username: string; expiresAt: Date }) {
+  return new SignJWT(payload)
+    .setProtectedHeader({ alg: "HS256" })
+    .setIssuedAt()
+    .setExpirationTime("7d")
+    .sign(encodedKey);
 }
 
 // DECRYPT SESSION (JWT)
 export async function decrypt(session: string | undefined = "") {
   try {
-    const decoded = jwt.verify(session, process.env.JWT_SECRET!);
-    return decoded;
+    const { payload } = await jwtVerify(session, encodedKey, {
+      algorithms: ["HS256"],
+    });
+    return payload;
   } catch (error) {
     console.log(error);
     console.log("Failed to verify session");
@@ -34,6 +42,18 @@ export async function createSession(username: string) {
     sameSite: "lax",
     path: "/",
   });
+}
+
+// VERIFY SESSION
+export async function verifySession() {
+  const cookie = (await cookies()).get("session")?.value;
+  const session = await decrypt(cookie);
+
+  if (!session?.username) {
+    redirect("/login");
+  }
+
+  return { isAuth: true, username: session.username };
 }
 
 // DELETE SESSION

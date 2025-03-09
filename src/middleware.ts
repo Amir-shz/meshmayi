@@ -1,10 +1,18 @@
-// This function can be marked `async` if using `await` inside
-export function middleware() {
-  // request: NextRequest
-  // return NextResponse.redirect(new URL("/home", request.url));
+import { cookies } from "next/headers";
+import { decrypt } from "./lib/session";
+import { NextRequest, NextResponse } from "next/server";
+
+export default async function middleware(request: NextRequest) {
+  const session = (await cookies()).get("session")?.value;
+  const payload = await decrypt(session);
+
+  if (!payload?.username && request.nextUrl.pathname !== "/login")
+    return NextResponse.redirect(new URL("/login", request.url));
+
+  if (payload?.username && request.nextUrl.pathname === "/login")
+    return NextResponse.redirect(new URL("/dashboard", request.url));
 }
 
-// See "Matching Paths" below to learn more
 export const config = {
-  // matcher: "/about/:path*",
+  matcher: ["/dashboard/:path*", "/login"],
 };
