@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 interface buttonProps {
   type?: "filled" | "outline" | "text";
   size?: "small" | "big" | "Xbig";
-  disable?: boolean;
+  disabled?: boolean;
   fullWidth?: boolean;
   onClick?: () => void;
   icon?: ReactNode | false;
@@ -15,7 +15,7 @@ interface buttonProps {
 function Button({
   type = "filled",
   size = "small",
-  disable = false,
+  disabled = false,
   icon = false,
   fullWidth = false,
   onClick = () => {},
@@ -24,7 +24,7 @@ function Button({
   return (
     <button
       onClick={onClick}
-      disabled={disable}
+      disabled={disabled}
       className={`
         rounded-lg px-6 duration-300
         ${fullWidth && "w-full flex justify-center items-center"}
