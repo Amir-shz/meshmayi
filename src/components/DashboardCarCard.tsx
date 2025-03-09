@@ -5,8 +5,8 @@ import { HiOutlinePencil, HiTrash } from "react-icons/hi";
 
 function DashboardCarCard() {
   return (
-    <div className="w-full rounded-lg overflow-hidden border border-neutral-300 bg-neutral-100">
-      <div className="h-[10.5rem] w-full">
+    <div className="w-full col-span-2 rounded-lg overflow-hidden border border-neutral-300 bg-neutral-100">
+      <div className="h-[10.5rem] w-full ">
         <Slider />
       </div>
       <div className="m-3">

@@ -11,7 +11,7 @@ function layout({
       <DashboardSideBar />
       <div className="col-span-9 pl-16 pr-8 flex flex-col gap-8">
         <DashboardHeader />
-        <section className="h-[calc(100dvh-8rem)] overflow-hidden">
+        <section className="h-[calc(100dvh-8rem-4px)] overflow-hidden mb-1">
           {children}
         </section>
       </div>
