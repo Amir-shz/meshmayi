@@ -1,5 +1,5 @@
 import Button from "@/components/Button";
-import EditCarForm from "@/components/EditCarForm";
+import EditCarForm from "@/features/car/EditCarForm";
 import { createCar } from "@/lib/actions/car";
 import { HiOutlineSave } from "react-icons/hi";
 
