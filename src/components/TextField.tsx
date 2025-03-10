@@ -1,3 +1,5 @@
+"use client";
+
 interface TextFieldProps {
   size?: "small" | "mobile" | "big";
   label: string;
@@ -6,6 +8,8 @@ interface TextFieldProps {
   disabled?: boolean;
   name: string;
   id: string;
+  value?: string;
+  onChange?: (e) => void;
 }
 
 function TextField({
@@ -16,6 +20,8 @@ function TextField({
   name,
   id,
   disabled = false,
+  value = "",
+  onChange,
 }: TextFieldProps) {
   return (
     <label
@@ -34,6 +40,8 @@ function TextField({
         type="text"
         name={name}
         id={id}
+        value={value}
+        onChange={onChange}
         placeholder={placeholder}
         disabled={disabled}
         className={`mt-2 mb-1 rounded-lg border hover:border-primary-500 focus:outline-none focus:border-primary-500 bg-neutral-50 text-neutral-600 duration-300

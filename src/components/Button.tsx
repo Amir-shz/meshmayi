@@ -10,6 +10,7 @@ interface buttonProps {
   onClick?: () => void;
   icon?: ReactNode | false;
   children: string;
+  submit?: boolean;
 }
 
 function Button({
@@ -19,10 +20,12 @@ function Button({
   icon = false,
   fullWidth = false,
   onClick = () => {},
+  submit = false,
   children,
 }: buttonProps) {
   return (
     <button
+      type={submit ? "submit" : "button"}
       onClick={onClick}
       disabled={disabled}
       className={`
