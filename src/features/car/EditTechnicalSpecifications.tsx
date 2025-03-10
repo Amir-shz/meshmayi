@@ -1,7 +1,8 @@
 import Button from "@/components/Button";
+import IconButton from "@/components/IconButton";
 import TextField from "@/components/TextField";
 import { useState } from "react";
-import { HiPlus } from "react-icons/hi";
+import { HiOutlineTrash, HiPlus } from "react-icons/hi";
 
 function EditTechnicalSpecifications({
   technicalSpecifications,
@@ -32,12 +33,18 @@ function EditTechnicalSpecifications({
     );
   }
 
+  function handleRemoveTechnicalSpecification(index: number) {
+    setTechnicalSpecificationsInput((prev) =>
+      prev.filter((el, idx) => index !== idx)
+    );
+  }
+
   return (
     <>
       {technicalSpecificationsInput.map((technicalSpecification, index) => (
         <div
           key={index}
-          className="p-4 rounded-lg border border-neutral-400 mb-2"
+          className="p-4 rounded-lg border border-neutral-400 mb-2 relative"
         >
           <TextField
             label="لیبل(تایتل)"
@@ -57,6 +64,13 @@ function EditTechnicalSpecifications({
               handleUpdateTechnicalSpecifications(index, "description", e)
             }
           />
+          <IconButton
+            size="lg"
+            onClick={() => handleRemoveTechnicalSpecification(index)}
+            className="absolute top-0 left-0 -translate-x-1/3 -translate-y-1/2"
+          >
+            <HiOutlineTrash className="text-red-500" />
+          </IconButton>
         </div>
       ))}
       <Button
