@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Check, ChevronsUpDown } from "lucide-react";
+import { Check } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -8,7 +8,6 @@ import {
   Command,
   CommandEmpty,
   CommandGroup,
-  CommandInput,
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
@@ -17,37 +16,20 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-// import Button from "@/components/Button";
+import { HiOutlineChevronDown } from "react-icons/hi";
 
-const frameworks = [
+const colorsArr = [
   {
-    value: "next.js",
-    label: "Next.js",
+    value: "red",
+    label: "قرمز",
   },
   {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
+    value: "blue",
+    label: "آبی",
   },
 ];
 
 function EditColors({ colors }: { colors: string[] }) {
-  // const [colorsInput, setColorsInput] = useState(colors);
-  // function handleChangeColors(e) {
-  //   setFormStates({ ...formStates, colors: e.target.value });
-  // }
-
   const [open, setOpen] = useState(false);
   const [selectedValues, setSelectedValues] = useState<string[]>([...colors]);
 
@@ -60,50 +42,63 @@ function EditColors({ colors }: { colors: string[] }) {
   };
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
-        <Button
-          variant="outline"
-          role="combobox"
-          aria-expanded={open}
-          className="w-full justify-between"
-        >
-          {selectedValues.length > 0
-            ? selectedValues
-                .map((val) => frameworks.find((f) => f.value === val)?.label)
-                .join(", ")
-            : "Select frameworks..."}
-          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent className="w-full p-0">
-        <Command>
-          <CommandInput placeholder="Search framework..." />
-          <CommandList>
-            <CommandEmpty>No framework found.</CommandEmpty>
-            <CommandGroup>
-              {frameworks.map((framework) => (
-                <CommandItem
-                  key={framework.value}
-                  value={framework.value}
-                  onSelect={() => toggleSelection(framework.value)}
-                >
-                  {framework.label}
-                  <Check
-                    className={cn(
-                      "ml-auto",
-                      selectedValues.includes(framework.value)
-                        ? "opacity-100"
-                        : "opacity-0"
-                    )}
-                  />
-                </CommandItem>
-              ))}
-            </CommandGroup>
-          </CommandList>
-        </Command>
-      </PopoverContent>
-    </Popover>
+    <div className=" w-full">
+      <p className="text-neutral-700 text-p3_M_desktop  mb-2"> رنگ ها</p>
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <Button
+            type="button"
+            variant="outline"
+            role="combobox"
+            id="combo"
+            aria-expanded={open}
+            className="w-full justify-between h-12 rounded-lg border hover:border-primary-500 focus:outline-none focus:border-primary-500 bg-neutral-50 text-neutral-600 duration-300"
+          >
+            {selectedValues.length > 0
+              ? selectedValues
+                  .map((val) => colorsArr.find((f) => f.value === val)?.label)
+                  .join(", ")
+              : "رنگ ها را انتخاب کنید"}
+
+            <HiOutlineChevronDown
+              className=" text-neutral-400"
+              style={{ width: "24px", height: "24px" }}
+            />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className=" p-0">
+          <Command>
+            {/* <CommandInput placeholder="جستجوی ..." /> */}
+            <CommandList>
+              <CommandEmpty>رنگی یافت نشد</CommandEmpty>
+              <CommandGroup>
+                {colorsArr.map((color) => (
+                  <CommandItem
+                    key={color.value}
+                    value={color.value}
+                    onSelect={() => toggleSelection(color.value)}
+                  >
+                    {color.label}
+                    <Check
+                      className={cn(
+                        "ml-auto",
+                        selectedValues.includes(color.value)
+                          ? "opacity-100"
+                          : "opacity-0"
+                      )}
+                    />
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            </CommandList>
+          </Command>
+        </PopoverContent>
+      </Popover>
+
+      {selectedValues.map((el, index) => (
+        <input key={index} name="colors" defaultValue={el} className="hidden" />
+      ))}
+    </div>
   );
 }
 
