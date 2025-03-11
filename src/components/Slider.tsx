@@ -1,6 +1,6 @@
 "use client";
 
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import { NextSliderButton, PrevSliderButton } from "@/components/SliderButton";
@@ -12,7 +12,7 @@ interface sliderProps {
 }
 
 function Slider({ pictures, onChangeSlide = () => {} }: sliderProps) {
-  function handleSlideChange(e) {
+  function handleSlideChange(e: SwiperClass) {
     onChangeSlide(e.activeIndex);
   }
 

@@ -27,22 +27,44 @@ interface carTypes {
   }[];
 }
 
-function EditCarForm({ car, title, btnText, action }: { car: carTypes }) {
-  const formRef = useRef();
+function EditCarForm({
+  car,
+  title,
+  btnText,
+  action,
+}: {
+  car: carTypes;
+  title: string;
+  btnText: string;
+  action: (formdata: FormData) => Promise<void>;
+}) {
+  // const formRef = useRef<HTMLFormElement>(undefined);
+  const formRef = useRef<HTMLFormElement | null>(null);
+
   const [newPicturesFile, setNewPicturesFile] = useState<
     { _id: string; src?: string; file?: File }[]
   >([...car.pictures]);
 
   async function handleSubmit() {
-    const formData = new FormData(formRef.current);
+    if (formRef.current) {
+      const formData = new FormData(formRef.current);
 
-    newPicturesFile.forEach((file) =>
-      file.src
-        ? formData.append("picturesSrc", file.src)
-        : formData.append("picturesFiles", file.file)
-    );
+      // newPicturesFile.forEach((file) =>
+      //   file.src
+      //     ? formData.append("picturesSrc", file.src)
+      //     : formData.append("picturesFiles", file.file)
+      // );
 
-    await action(formData);
+      newPicturesFile.forEach((file) => {
+        if (file.src) {
+          formData.append("picturesSrc", file.src);
+        } else if (file.file) {
+          formData.append("picturesFiles", file.file);
+        }
+      });
+
+      await action(formData);
+    }
   }
 
   return (

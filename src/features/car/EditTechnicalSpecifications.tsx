@@ -1,7 +1,7 @@
 import Button from "@/components/Button";
 import IconButton from "@/components/IconButton";
 import TextField from "@/components/TextField";
-import { useState } from "react";
+import React, { useState } from "react";
 import { HiOutlineTrash, HiPlus } from "react-icons/hi";
 
 function EditTechnicalSpecifications({
@@ -25,7 +25,11 @@ function EditTechnicalSpecifications({
     ]);
   }
 
-  function handleUpdateTechnicalSpecifications(index, key, e) {
+  function handleUpdateTechnicalSpecifications(
+    index: number,
+    key: string,
+    e: React.ChangeEvent<HTMLInputElement>
+  ) {
     setTechnicalSpecificationsInput((prevState) =>
       prevState.map((item, i) =>
         i === index ? { ...item, [key]: e.target.value } : item

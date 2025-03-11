@@ -10,7 +10,7 @@ function page() {
         name: "",
         price: 0,
         model: 0,
-        colors: "",
+        colors: [],
         descriptions: [],
         options: [],
         technicalSpecifications: [],

@@ -4,7 +4,7 @@ import { useState } from "react";
 function EditName({ name }: { name: string }) {
   const [nameInput, setNameInput] = useState(`${name}`);
 
-  function handleChangeName(e) {
+  function handleChangeName(e: React.ChangeEvent<HTMLInputElement>) {
     setNameInput(e.target.value);
   }
 
@@ -14,7 +14,6 @@ function EditName({ name }: { name: string }) {
       label="نام ماشین"
       name="name"
       id="name"
-      // value={formStates.name}
       value={nameInput}
       onChange={handleChangeName}
     />

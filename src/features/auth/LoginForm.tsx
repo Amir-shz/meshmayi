@@ -12,7 +12,8 @@ const initialState = {
 };
 
 function LoginForm() {
-  const [state, formAction, pending] = useActionState(login, initialState);
+  // @ts-expect-error :: i dont want this error
+  const [state, formAction] = useActionState(login, initialState);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 

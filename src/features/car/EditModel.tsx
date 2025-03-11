@@ -5,7 +5,7 @@ import { useState } from "react";
 function EditModel({ model }: { model: number }) {
   const [modelInput, setModelInput] = useState(`${digitsEnToFa(model)}`);
 
-  function handleChangeModel(e) {
+  function handleChangeModel(e: React.ChangeEvent<HTMLInputElement>) {
     if (isNaN(Number(digitsFaToEn(e.target.value)))) return;
 
     setModelInput(digitsEnToFa(e.target.value));

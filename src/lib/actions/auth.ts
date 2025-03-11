@@ -6,7 +6,17 @@ import { createSession, deleteSession } from "../session";
 const username = process.env.ADMIN_USERNAME;
 const password = process.env.ADMIN_PASSWORD;
 
-export async function login(prevState: object, formData: FormData) {
+// LOGIN SERVER ACTION
+
+export async function login(
+  prevState: object,
+  // | undefined
+  // | {
+  //     usernameError?: string | undefined;
+  //     passwordError?: string | undefined;
+  //   },
+  formData: FormData
+) {
   if (
     formData.get("username") === username &&
     formData.get("password") === password
@@ -27,6 +37,8 @@ export async function login(prevState: object, formData: FormData) {
     };
   }
 }
+
+// LOGOUT SERVER ACTION
 
 export async function logout() {
   await deleteSession();

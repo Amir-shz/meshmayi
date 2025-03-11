@@ -19,6 +19,18 @@ function EditPicturesModal({
   onAddPicture,
   setNewPicturesFile,
   newPicturesFile,
+}: {
+  showEditModal: boolean;
+  setShowEditModal: React.Dispatch<React.SetStateAction<boolean>>;
+  pictures: { _id: string; src: string }[];
+  setPictures: React.Dispatch<
+    React.SetStateAction<{ _id: string; src: string }[]>
+  >;
+  onAddPicture: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  setNewPicturesFile: React.Dispatch<
+    React.SetStateAction<{ _id: string; src?: string; file?: File }[]>
+  >;
+  newPicturesFile: { _id: string; src?: string; file?: File }[];
 }) {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -34,11 +46,19 @@ function EditPicturesModal({
   async function handleSubmit() {
     const formData = new FormData();
 
-    newPicturesFile.forEach((file) =>
-      file.src
-        ? formData.append("picturesSrc", file.src)
-        : formData.append("picturesFiles", file.file)
-    );
+    // newPicturesFile.forEach((file) =>
+    //   file.src
+    //     ? formData.append("picturesSrc", file.src)
+    //     : formData.append("picturesFiles", file.file)
+    // );
+
+    newPicturesFile.forEach((file) => {
+      if (file.src) {
+        formData.append("picturesSrc", file.src);
+      } else if (file.file) {
+        formData.append("picturesFiles", file.file);
+      }
+    });
 
     await updateCarPictures(formData);
 

@@ -1,5 +1,7 @@
 "use client";
 
+import React from "react";
+
 interface TextFieldProps {
   size?: "small" | "mobile" | "big";
   label: string;
@@ -9,7 +11,7 @@ interface TextFieldProps {
   name: string;
   id: string;
   value?: string;
-  onChange?: (e) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 function TextField({
