@@ -11,3 +11,7 @@ export async function createCar(formdata: FormData) {
 export async function deleteCar(id: string) {
   console.log(id);
 }
+
+export async function updateCarPictures(formdata: FormData) {
+  console.log(formdata);
+}

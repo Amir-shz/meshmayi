@@ -8,12 +8,18 @@ import Image from "next/image";
 
 interface sliderProps {
   pictures: { _id: string; src: string }[];
+  onChangeSlide?: (num: number) => void;
 }
 
-function Slider({ pictures }: sliderProps) {
+function Slider({ pictures, onChangeSlide = () => {} }: sliderProps) {
+  function handleSlideChange(e) {
+    onChangeSlide(e.activeIndex);
+  }
+
   return (
     <>
       <Swiper
+        onSlideChange={handleSlideChange}
         slidesPerView={1}
         spaceBetween={0}
         grabCursor={true}

@@ -1,7 +1,5 @@
-import Button from "@/components/Button";
 import EditCarForm from "@/features/car/EditCarForm";
 import { editCar } from "@/lib/actions/car";
-import { HiOutlineSave } from "react-icons/hi";
 
 export const revalidate = 0;
 
@@ -12,21 +10,12 @@ async function page({ params }: { params: Promise<{ id: string }> }) {
     .then((data) => data.data);
 
   return (
-    <form
+    <EditCarForm
+      car={car}
       action={editCar}
-      className="col-span-full items-start h-full rounded-2xl bg-neutral-100 border border-neutral-300 "
-    >
-      <input type="hidden" name="id" defaultValue={car._id} />
-      <div className=" border-b border-neutral-300 col-span-full p-8 flex justify-between items-center">
-        <p className=" text-h4_B_desktop text-neutral-700 leading-8">
-          ویرایش محصول
-        </p>
-        <Button size="big" type="filled" icon={<HiOutlineSave />} submit>
-          ذخیره تغییرات
-        </Button>
-      </div>
-      <EditCarForm car={car} />
-    </form>
+      title="ویرایش محصول"
+      btnText="ذخیره تغییرات"
+    />
   );
 }
 

@@ -3,18 +3,31 @@ import Slider from "@/components/Slider";
 import { useRef, useState } from "react";
 import { HiOutlinePencil, HiPlus } from "react-icons/hi";
 
+import EditPicturesModal from "./EditPicturesModal";
+
 function EditPictures({
   pictures,
+  newPicturesFile,
+  setNewPicturesFile,
 }: {
   pictures: { _id: string; src: string }[];
 }) {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [picturesInput, setPicturesInput] = useState([...pictures]);
+  const [showEditModal, setShowEditModal] = useState(false);
 
   function handleAddPicture(e) {
-    // upload
-    // add to database
-    // add to formstates
+    const file = e.target.files[0];
+    const id = crypto.randomUUID();
+
+    setNewPicturesFile([...newPicturesFile, { _id: id, file: file }]);
+
+    const newImage = {
+      _id: id,
+      src: URL.createObjectURL(file),
+    };
+
+    setPicturesInput((prev) => [...prev, newImage]);
   }
 
   return (
@@ -26,8 +39,6 @@ function EditPictures({
         <input
           type="file"
           accept="image/*"
-          multiple
-          // name="newPictures"
           onChange={handleAddPicture}
           ref={fileInputRef}
           className="hidden"
@@ -41,9 +52,24 @@ function EditPictures({
         >
           افزودن تصویر
         </Button>
-        <Button fullWidth icon={<HiOutlinePencil />} size="Xbig">
+        <Button
+          fullWidth
+          icon={<HiOutlinePencil />}
+          size="Xbig"
+          onClick={() => setShowEditModal(true)}
+        >
           ویرایش تصویر
         </Button>
+
+        <EditPicturesModal
+          showEditModal={showEditModal}
+          setShowEditModal={setShowEditModal}
+          pictures={picturesInput}
+          setPictures={setPicturesInput}
+          onAddPicture={handleAddPicture}
+          setNewPicturesFile={setNewPicturesFile}
+          newPicturesFile={newPicturesFile}
+        />
       </div>
     </>
   );

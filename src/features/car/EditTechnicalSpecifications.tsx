@@ -67,7 +67,7 @@ function EditTechnicalSpecifications({
           <IconButton
             size="lg"
             onClick={() => handleRemoveTechnicalSpecification(index)}
-            className="absolute top-0 left-0 -translate-x-1/3 -translate-y-1/2"
+            className="absolute top-0 left-0  -translate-x-1 -translate-y-2"
           >
             <HiOutlineTrash className="text-red-500" />
           </IconButton>

@@ -8,6 +8,9 @@ import EditTechnicalSpecifications from "./EditTechnicalSpecifications";
 import EditOptions from "./EditOptions";
 import EditDescriptions from "./EditDescriptions";
 import EditPictures from "./EditPictures";
+import Button from "@/components/Button";
+import { HiOutlineSave } from "react-icons/hi";
+import { useRef, useState } from "react";
 
 interface carTypes {
   _id?: string;
@@ -24,32 +27,67 @@ interface carTypes {
   }[];
 }
 
-function EditCarForm({ car }: { car: carTypes }) {
-  return (
-    <div className=" grid grid-cols-7 gap-8 px-8 overflow-y-scroll max-h-full pt-8 pb-28 hide-scrollbar">
-      <div className=" col-span-3">
-        <EditPictures pictures={car.pictures} />
-        <p className=" text-p2_SB_desktop mb-2 mt-[3.3rem]">توضیحات</p>
-        <EditDescriptions descriptions={car.descriptions} />
-      </div>
-      <div className=" items-start col-span-4 grid grid-cols-2 gap-x-5 gap-y-8 content-start">
-        <EditName name={car.name} />
-        <EditPrice price={car.price} />
-        <EditModel model={car.model} />
-        <EditColors colors={car.colors} />
+function EditCarForm({ car, title, btnText, action }: { car: carTypes }) {
+  const formRef = useRef();
+  const [newPicturesFile, setNewPicturesFile] = useState<
+    { _id: string; src?: string; file?: File }[]
+  >([...car.pictures]);
 
-        <div>
-          <p className=" text-p2_SB_desktop mb-2">مشخصات فنی</p>
-          <EditTechnicalSpecifications
-            technicalSpecifications={car.technicalSpecifications}
+  async function handleSubmit() {
+    const formData = new FormData(formRef.current);
+
+    newPicturesFile.forEach((file) =>
+      file.src
+        ? formData.append("picturesSrc", file.src)
+        : formData.append("picturesFiles", file.file)
+    );
+
+    await action(formData);
+  }
+
+  return (
+    <form
+      // action={editCar}
+      onSubmit={handleSubmit}
+      ref={formRef}
+      className="col-span-full items-start h-full rounded-2xl bg-neutral-100 border border-neutral-300 "
+    >
+      <input type="hidden" name="id" defaultValue={car._id} />
+      <div className=" border-b border-neutral-300 col-span-full p-8 flex justify-between items-center">
+        <p className=" text-h4_B_desktop text-neutral-700 leading-8">{title}</p>
+        <Button size="big" type="filled" icon={<HiOutlineSave />} submit>
+          {btnText}
+        </Button>
+      </div>
+      <div className=" grid grid-cols-7 gap-8 px-8 overflow-y-scroll max-h-full pt-8 pb-28 hide-scrollbar">
+        <div className=" col-span-3">
+          <EditPictures
+            pictures={car.pictures}
+            newPicturesFile={newPicturesFile}
+            setNewPicturesFile={setNewPicturesFile}
           />
+          <p className=" text-p2_SB_desktop mb-2 mt-[3.3rem]">توضیحات</p>
+          <EditDescriptions descriptions={car.descriptions} />
         </div>
-        <div>
-          <p className=" text-p2_SB_desktop mb-2">آپشن ها</p>
-          <EditOptions options={car.options} />
+        <div className=" items-start col-span-4 grid grid-cols-2 gap-x-5 gap-y-8 content-start">
+          <EditName name={car.name} />
+          <EditPrice price={car.price} />
+          <EditModel model={car.model} />
+          <EditColors colors={car.colors} />
+
+          <div>
+            <p className=" text-p2_SB_desktop mb-2">مشخصات فنی</p>
+            <EditTechnicalSpecifications
+              technicalSpecifications={car.technicalSpecifications}
+            />
+          </div>
+          <div>
+            <p className=" text-p2_SB_desktop mb-2">آپشن ها</p>
+            <EditOptions options={car.options} />
+          </div>
         </div>
       </div>
-    </div>
+    </form>
   );
 }
 

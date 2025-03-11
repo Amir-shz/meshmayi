@@ -52,7 +52,9 @@ function EditColors({ colors }: { colors: string[] }) {
             role="combobox"
             id="combo"
             aria-expanded={open}
-            className="w-full justify-between h-12 rounded-lg border hover:border-primary-500 focus:outline-none focus:border-primary-500 bg-neutral-50 text-neutral-600 duration-300"
+            className={`w-full justify-between h-12 rounded-lg border hover:border-primary-500 focus:outline-none focus:border-primary-500 bg-neutral-50 text-neutral-600 duration-300 ${
+              open && "border-primary-500"
+            }`}
           >
             {selectedValues.length > 0
               ? selectedValues
