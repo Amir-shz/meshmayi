@@ -11,6 +11,7 @@ import EditPictures from "./EditPictures";
 import Button from "@/components/Button";
 import { HiOutlineSave } from "react-icons/hi";
 import { useRef, useState } from "react";
+import CheckBoxItem from "@/components/CheckBoxItem";
 
 interface carTypes {
   _id?: string;
@@ -18,6 +19,7 @@ interface carTypes {
   price: number;
   model: number;
   colors: string[];
+  labels: string[];
   pictures: { _id: string; src: string }[];
   descriptions: string[];
   options: string[];
@@ -45,7 +47,9 @@ function EditCarForm({
     { _id: string; src?: string; file?: File }[]
   >([...car.pictures]);
 
-  async function handleSubmit() {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
     if (formRef.current) {
       const formData = new FormData(formRef.current);
 
@@ -88,7 +92,19 @@ function EditCarForm({
             newPicturesFile={newPicturesFile}
             setNewPicturesFile={setNewPicturesFile}
           />
-          <p className=" text-p2_SB_desktop mb-2 mt-[3.3rem]">توضیحات</p>
+          <div className=" my-6 flex flex-wrap gap-3">
+            <CheckBoxItem
+              name="label"
+              label="پیشنهاد ویژه"
+              checked={car.labels.includes("پیشنهاد ویژه")}
+            />
+            <CheckBoxItem
+              name="label"
+              label="جدید"
+              checked={car.labels.includes("جدید")}
+            />
+          </div>
+          <p className=" text-p2_SB_desktop mb-2">توضیحات</p>
           <EditDescriptions descriptions={car.descriptions} />
         </div>
         <div className=" items-start col-span-4 grid grid-cols-2 gap-x-5 gap-y-8 content-start">

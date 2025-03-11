@@ -10,6 +10,7 @@ const carSchema = new mongoose.Schema({
   model: {
     type: Number,
   },
+  labels: [String],
   colors: [String],
   pictures: [{ src: { type: String } }],
   descriptions: [String],
