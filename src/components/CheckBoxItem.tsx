@@ -30,7 +30,7 @@ function CheckBoxItem({
           <HiOutlineCheck className=" hidden text-neutral-50" />
         </span>
       </span>
-      <p className=" text-p3_M_desktop text-neutral-700">{label}</p>
+      <p className=" text-p2_M_desktop text-neutral-700">{label}</p>
     </label>
   );
 }

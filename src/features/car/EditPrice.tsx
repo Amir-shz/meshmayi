@@ -3,7 +3,7 @@ import { addCommas, removeCommas } from "@persian-tools/persian-tools";
 import React, { useState } from "react";
 
 function EditPrice({ price }: { price: number }) {
-  const [priceInput, setPriceInput] = useState(`${price}`);
+  const [priceInput, setPriceInput] = useState(`${price ? price : "0"}`);
 
   function handleChangePrice(e: React.ChangeEvent<HTMLInputElement>) {
     if (isNaN(removeCommas(String(e.target.value)))) return;

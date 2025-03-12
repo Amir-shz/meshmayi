@@ -10,9 +10,10 @@ interface carTypes {
   name: string;
   price: number;
   model: number;
-  colors: Record<string, string>;
+  colors: string[];
+  labels: string[];
   pictures: { _id: string; src: string }[];
-  descriptions: Record<string, string>;
+  descriptions: string[];
   options: string[];
   technicalSpecifications: {
     label: string;

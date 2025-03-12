@@ -382,10 +382,16 @@ export default {
           },
         ],
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+      // borderRadius: {
+      //   lg: "var(--radius)",
+      //   md: "calc(var(--radius) - 2px)",
+      //   sm: "calc(var(--radius) - 4px)",
+      // },
+      boxShadow: {
+        // 1: '4px 4px 8px 0px rgba(23,23,23,0.16)',
+        // 2: '0px 4px 8px 0px rgba(23,23,23,0.08)',
+        3: "2px 2px 6px 0px rgba(23, 23, 23, 0.16)",
+        // 4: '0px 0px 4px 1px rgba(23,23,23,0.16)',
       },
     },
   },
