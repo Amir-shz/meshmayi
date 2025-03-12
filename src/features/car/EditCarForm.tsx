@@ -96,12 +96,12 @@ function EditCarForm({
             <CheckBoxItem
               name="label"
               label="پیشنهاد ویژه"
-              checked={car.labels.includes("پیشنهاد ویژه")}
+              checked={car.labels?.includes("پیشنهاد ویژه")}
             />
             <CheckBoxItem
               name="label"
               label="جدید"
-              checked={car.labels.includes("جدید")}
+              checked={car.labels?.includes("جدید")}
             />
           </div>
           <p className=" text-p2_SB_desktop mb-2">توضیحات</p>
