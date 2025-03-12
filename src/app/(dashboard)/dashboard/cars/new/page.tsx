@@ -15,6 +15,7 @@ function page() {
         options: [],
         technicalSpecifications: [],
         pictures: [],
+        labels: [],
       }}
       action={createCar}
       title="ایجاد محصول"
