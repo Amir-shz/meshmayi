@@ -1,5 +1,5 @@
 function Logo() {
-  return <div>logo</div>;
+  return <div className=" size-14 flex justify-center items-center">logo</div>;
 }
 
 export default Logo;
