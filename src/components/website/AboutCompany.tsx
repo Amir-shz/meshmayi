@@ -1,11 +1,13 @@
 function AboutCompany() {
   return (
-    <div className=" col-span-5 row-span-2 p-6 rounded-lg border border-neutral-300 bg-neutral-100 flex flex-col gap-4">
+    <div className=" col-span-5 row-span-2 p-6 max-sm:p-4 rounded-lg border border-neutral-300 bg-neutral-100 flex flex-col gap-4 max-sm:gap-3 max-sm:col-span-full">
       <div className=" flex items-center gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="32"
-          height="32"
+          // width="32"
+          // height="32"
+
+          className=" size-8 max-sm:size-6"
           viewBox="0 0 32 32"
           fill="none"
         >
@@ -17,11 +19,11 @@ function AboutCompany() {
             strokeLinejoin="round"
           />
         </svg>
-        <p className=" text-h5_SB_desktop text-neutral-800">
+        <p className=" text-h5_SB_desktop max-sm:text-h5_SB_mobile text-neutral-800">
           شرکت زرسازان بهرو
         </p>
       </div>
-      <div className=" text-neutral-500 font-medium text-lg leading-[2.125rem] space-y-2">
+      <div className=" text-neutral-500 font-medium text-lg max-sm:text-[0.87813rem] leading-[2.125rem] max-sm:leading-[130%] space-y-2">
         <p>
           شرکت زرسازان بهرو، واردات کننده خودرو سواری خارجی خصوصا مصوبه‌ خودروی
           جانبازان معزز به مدیریت دکتر جمال مشمایی با سابقه درخشان و پایدار.

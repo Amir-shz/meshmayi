@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 function HeaderNav() {
   const pathName = usePathname();
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState<string | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -19,12 +19,10 @@ function HeaderNav() {
         });
       },
       {
-        // threshold: 0.5
-
-        root: null, // بررسی در کل صفحه (viewport)
-        rootMargin: "100px 0px 100px 0px", // وقتی 100 پیکسل از سکشن وارد صفحه شد، فعال شود
-        threshold: 0, // بررسی فقط وقتی که مقداری از سکشن وارد صفحه می‌شود
-      } // 60% از سکشن قابل مشاهده باشد، فعال شود
+        root: null,
+        // rootMargin: "-100px",
+        threshold: 0,
+      }
     );
 
     NAV_ITEMS.forEach(({ id }) => {
@@ -37,7 +35,7 @@ function HeaderNav() {
 
   return (
     <nav
-      className={`flex gap-10 translate-x-20 ${
+      className={`flex gap-10 translate-x-20 max-sm:hidden ${
         pathName !== "/" ? "hidden" : "block"
       }`}
     >

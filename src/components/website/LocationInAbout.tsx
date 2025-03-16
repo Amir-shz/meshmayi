@@ -2,14 +2,15 @@ import MapLocation from "./MapLocation";
 
 function LocationInAbout() {
   return (
-    <div className=" col-span-7 p-6 rounded-lg border border-neutral-300 bg-neutral-100">
-      <div className="text-neutral-500 font-medium text-lg leading-[2.125rem] flex items-center h-full gap-6">
-        <div className=" basis-1/2 space-y-4 self-start">
+    <div className=" col-span-7 p-6  max-sm:p-4 rounded-lg border border-neutral-300 bg-neutral-100 max-sm:col-span-full">
+      <div className="text-neutral-500 font-medium text-lg leading-[2.125rem] max-sm:leading-[130%] max-sm:text-[0.87813rem] flex items-center h-full gap-6 max-sm:flex-col max-sm:gap-3">
+        <div className=" basis-1/2 space-y-4 self-start max-sm:space-y-3 max-sm:basis-auto ">
           <div className=" flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
+              // width="32"
+              // height="32"
+              className=" size-8 max-sm:size-6"
               viewBox="0 0 32 32"
               fill="none"
             >
@@ -28,7 +29,7 @@ function LocationInAbout() {
                 strokeLinejoin="round"
               />
             </svg>
-            <p className=" text-h5_SB_desktop text-neutral-800">
+            <p className=" text-h5_SB_desktop max-sm:text-h5_SB_mobile text-neutral-800">
               آدرس و لوکیشن
             </p>
           </div>
@@ -37,7 +38,7 @@ function LocationInAbout() {
             زرسازان بهرو
           </p>
         </div>
-        <div className=" basis-1/2 h-full rounded-lg overflow-hidden border border-neutral-300">
+        <div className=" basis-1/2 h-full rounded-lg overflow-hidden border border-neutral-300 max-sm:w-full max-sm:basis-auto max-sm:h-24">
           <MapLocation />
         </div>
       </div>

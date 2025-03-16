@@ -6,7 +6,7 @@ import WhatsappIcon from "../icons/WhatsappIcon";
 
 function SocialsBox() {
   return (
-    <div className=" p-6 pb-5 rounded-lg border border-neutral-300 bg-neutral-100 flex flex-col gap-5">
+    <div className=" p-6 pb-5 max-sm:p-4 rounded-lg border border-neutral-300 bg-neutral-100 flex flex-col gap-5 max-sm:gap-4">
       <div className=" flex items-center gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -23,9 +23,11 @@ function SocialsBox() {
             strokeLinejoin="round"
           />
         </svg>
-        <p className=" text-h5_SB_desktop text-neutral-800">شبکه‌های اجتماعی</p>
+        <p className=" text-h5_SB_desktop max-sm:text-h5_SB_mobile text-neutral-800">
+          شبکه‌های اجتماعی
+        </p>
       </div>
-      <div className=" py-3 px-10 rounded-lg border border-neutral-300 grid grid-cols-4 justify-items-center [&>a]:px-8 [&>a]:py-7 [&>a:hover]:bg-primary-50 [&>a]:rounded-lg [&>a]:border [&>a]:border-neutral-100 [&>a:hover]:border-primary-200 [&>a]:duration-300">
+      <div className=" py-3 px-10 max-sm:px-2 max-sm:py-3 rounded-lg border border-neutral-300 grid grid-cols-4 justify-items-center [&>a]:px-8 [&>a]:py-7 max-sm:[&>a]:px-6  max-sm:[&>a]:py-4 [&>a:hover]:bg-primary-50 [&>a]:rounded-lg [&>a]:border [&>a]:border-neutral-100 [&>a:hover]:border-primary-200 [&>a]:duration-300">
         <Link
           className="[&_path]:hover:fill-primary-500 [&_path]:duration-300"
           href=""

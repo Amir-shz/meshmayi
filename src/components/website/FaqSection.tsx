@@ -8,10 +8,13 @@ import { FAQ_ITEMS } from "@/utils/utils";
 
 function FaqSection() {
   return (
-    <section id="faq" className=" flex gap-7">
-      <div className=" basis-1/2">
+    <section id="faq" className=" flex gap-7 max-sm:flex-col max-sm:gap-4">
+      <div className=" basis-1/2 max-sm:basis-auto">
         <SectionsHeader title="سوالات متداول" />
-        <Accordion type="multiple" className="w-full space-y-4">
+        <Accordion
+          type="multiple"
+          className="w-full space-y-4 max-sm:space-y-3"
+        >
           {FAQ_ITEMS.map((faq) => (
             <FaqItem
               key={faq.id}
@@ -22,7 +25,7 @@ function FaqSection() {
           ))}
         </Accordion>
       </div>
-      <div className=" basis-1/2">
+      <div className=" basis-1/2 self-center max-sm:basis-auto">
         <Image src={faqVector} alt="faqVector" />
       </div>
     </section>

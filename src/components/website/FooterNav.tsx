@@ -13,8 +13,8 @@ function FooterNav() {
         pathName !== "/" ? "hidden" : "block"
       }`}
     >
-      <ul className="flex justify-center gap-4 [&>li]:py-1  [&>li]:px-3 [&>li]:rounded-lg">
-        {NAV_ITEMS.map((navItem) => (
+      <ul className="flex justify-center gap-4 max-sm:gap-2 [&>li]:py-1  [&>li]:px-3 [&>li]:rounded-lg">
+        {NAV_ITEMS.filter((item) => item.id !== "products").map((navItem) => (
           <li key={navItem.id} className="hover:bg-primary-50 duration-300">
             <Link href={navItem.id}>{navItem.title}</Link>
           </li>

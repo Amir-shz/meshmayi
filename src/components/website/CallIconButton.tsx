@@ -12,7 +12,7 @@ function CallIconButton({ size, disabled = false }: callIconButtonProps) {
     <Link
       href={`tel:${PHONE_NUMBER}`}
       className={` rounded border duration-300
-        ${size === "sm" ? "p-3" : "p-4"}
+        ${size === "sm" ? "p-3" : "p-4 max-sm:p-3"}
         ${
           disabled
             ? " border-neutral-300 hover:border-neutral-300"

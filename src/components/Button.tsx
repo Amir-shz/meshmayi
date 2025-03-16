@@ -54,7 +54,7 @@ function Button({
         }
         ${
           size === "big" &&
-          "h-10 py-[0.62rem] text-p2_M_desktop leading-[1.23rem] [&>svg]:size-5"
+          "h-10 py-[0.62rem] text-p2_M_desktop leading-[1.23rem] [&>svg]:size-5 max-sm:h-8 max-sm:py-2 max-sm:text-p4_M_desktop max-sm:leading-[1.05863rem] max-sm:[&>svg]:size-4"
         }
         ${
           size === "Xbig" &&

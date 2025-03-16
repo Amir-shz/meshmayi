@@ -1,11 +1,12 @@
 function HistoryInAbout() {
   return (
-    <div className=" col-span-7 p-6 rounded-lg border border-neutral-300 bg-neutral-100 flex flex-col gap-4">
+    <div className=" col-span-7 p-6  max-sm:p-4  rounded-lg border border-neutral-300 bg-neutral-100 flex flex-col gap-4 max-sm:gap-3  max-sm:col-span-full">
       <div className=" flex items-center gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="32"
-          height="32"
+          // width="32"
+          // height="32"
+          className=" size-8 max-sm:size-6"
           viewBox="0 0 32 32"
           fill="none"
         >
@@ -22,9 +23,11 @@ function HistoryInAbout() {
             </clipPath>
           </defs>
         </svg>
-        <p className=" text-h5_SB_desktop text-neutral-800">سابقه</p>
+        <p className=" text-h5_SB_desktop max-sm:text-h5_SB_mobile text-neutral-800">
+          سابقه
+        </p>
       </div>
-      <div className=" text-neutral-500 font-medium text-lg leading-[2.125rem] space-y-2">
+      <div className=" text-neutral-500 font-medium text-lg max-sm:text-[0.87813rem] leading-[2.125rem] max-sm:leading-[130%] space-y-2">
         <p>
           گروه تجاری زرسازان از سال ۱۴۰۰ با شناسایی و نیاز سنجی بازار خودرو در
           کشور عزیزمان ایران، اقدام به فعالیت تخصصی در زمینه واردات خودروی خارجی

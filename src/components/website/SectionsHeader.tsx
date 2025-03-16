@@ -14,9 +14,9 @@ function SectionsHeader({
   linkTitle = "",
 }: sectionsHeaderProps) {
   return (
-    <div className=" flex items-center justify-between mb-4">
+    <div className=" flex items-center justify-between mb-4 max-sm:mb-5">
       <div className=" py-1 px-3 border-r-4 border-r-primary-500">
-        <p className=" text-neutral-800 leading-8 text-[1.42375rem] font-bold">
+        <p className=" text-neutral-800 leading-8 text-[1.42375rem] font-bold max-sm:text-h5_SB_mobile">
           {title}
         </p>
       </div>

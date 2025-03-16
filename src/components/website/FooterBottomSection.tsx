@@ -6,8 +6,8 @@ import WhatsappIcon from "../icons/WhatsappIcon";
 
 function FooterBottomSection() {
   return (
-    <div className=" flex items-center justify-between">
-      <div className=" flex gap-[5.5rem] items-center [&>a]:py-9">
+    <div className=" flex items-center justify-between max-sm:flex-col">
+      <div className=" flex gap-[5.5rem] items-center [&>a]:py-9 max-sm:gap-4 max-sm:[&_svg]:size-5 max-sm:[&>a]:py-4">
         <Link href="#">
           <TelegramIcon />
         </Link>
@@ -21,8 +21,8 @@ function FooterBottomSection() {
           <LinkedinIcon />
         </Link>
       </div>
-      <div className=" flex items-center gap-1 text-neutral-500">
-        <p className=" text-sm font-medium ">
+      <div className=" flex items-center gap-1 text-neutral-500 max-sm:mb-2">
+        <p className=" text-sm font-medium  ">
           All Rights Reserved by Zarsazan group
         </p>
         <p>&copy;</p>

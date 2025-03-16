@@ -23,7 +23,7 @@ import { carTypes } from "@/types/types";
 
 function CarCard({ car }: { car: carTypes }) {
   return (
-    <div className=" rounded-lg bg-neutral-100 border border-neutral-300 hover:border-primary-300 hover:shadow-3 overflow-hidden max-w-[34rem] flex flex-col duration-300">
+    <div className=" rounded-lg bg-neutral-100 border border-neutral-300 hover:border-primary-300 hover:shadow-3 overflow-hidden max-w-[34rem] flex flex-col duration-300 max-sm:max-w-full">
       <div className=" w-full h-[13.6875rem] relative z-10">
         <Slider pictures={car.pictures} />
 
