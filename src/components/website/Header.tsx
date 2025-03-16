@@ -1,4 +1,5 @@
 import Logo from "../Logo";
+import CallIconButton from "./CallIconButton";
 import HeaderNav from "./HeaderNav";
 
 function Header() {
@@ -11,7 +12,7 @@ function Header() {
         </h2>
       </div>
       <HeaderNav />
-      <div>icon</div>
+      <CallIconButton size="lg" />
     </header>
   );
 }

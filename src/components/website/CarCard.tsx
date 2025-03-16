@@ -3,22 +3,23 @@ import Slider from "../Slider";
 import Button from "../Button";
 import Link from "next/link";
 import { HiOutlineChevronLeft } from "react-icons/hi";
+import { carTypes } from "@/types/types";
 
-interface carTypes {
-  _id?: string;
-  name: string;
-  price: number;
-  model: number;
-  colors: string[];
-  labels: string[];
-  pictures: { _id: string; src: string }[];
-  descriptions: string[];
-  options: string[];
-  technicalSpecifications: {
-    label: string;
-    description: string;
-  };
-}
+// interface carTypes {
+//   _id: string;
+//   name: string;
+//   price: number;
+//   model: number;
+//   colors: string[];
+//   labels: string[];
+//   pictures: { _id: string; src: string }[];
+//   descriptions: string[];
+//   options: string[];
+//   technicalSpecifications: {
+//     label: string;
+//     description: string;
+//   };
+// }
 
 function CarCard({ car }: { car: carTypes }) {
   return (

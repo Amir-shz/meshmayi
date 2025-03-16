@@ -1,10 +1,26 @@
+"use client";
+
+import { NAV_ITEMS } from "@/utils/utils";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 function FooterNav() {
+  const pathName = usePathname();
+
   return (
-    <nav className="  p-1 rounded-lg border border-neutral-300 w-fit mx-auto">
+    <nav
+      className={`p-1 rounded-lg border border-neutral-300 w-fit mx-auto ${
+        pathName !== "/" ? "hidden" : "block"
+      }`}
+    >
       <ul className="flex justify-center gap-4 [&>li]:py-1  [&>li]:px-3 [&>li]:rounded-lg">
-        <li className="hover:bg-primary-50 duration-300">
+        {NAV_ITEMS.map((navItem) => (
+          <li key={navItem.id} className="hover:bg-primary-50 duration-300">
+            <Link href={navItem.id}>{navItem.title}</Link>
+          </li>
+        ))}
+
+        {/* <li className="hover:bg-primary-50 duration-300">
           <Link href="#home">صفحه اصلی</Link>
         </li>
         <li className="hover:bg-primary-50 duration-300">
@@ -15,7 +31,7 @@ function FooterNav() {
         </li>
         <li className="hover:bg-primary-50 duration-300">
           <Link href="#faq">سوالات متداول</Link>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );
