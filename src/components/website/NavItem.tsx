@@ -30,7 +30,7 @@ function NavItem({ id, active = false, children }: navItemProps) {
         active
           ? " text-primary-500 rounded-lg bg-primary-50 border-b-4 border-b-primary-500"
           : " text-neutral-600"
-      } py-3 px-6 text-p1_SB_desktop leading-[1.35rem]`}
+      } py-3 px-6 text-p1_SB_desktop leading-[1.35rem] duration-200`}
     >
       {children}
     </Link>
