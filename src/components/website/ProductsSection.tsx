@@ -2,7 +2,7 @@ import { carTypes } from "@/types/types";
 import CarCard from "./CarCard";
 import SectionsHeader from "./SectionsHeader";
 
-async function ProductsSection() {
+export default async function ProductsSection() {
   const cars = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/getSixLastCars`)
     .then((res) => res.json())
     .then((data) => data.data);
@@ -22,5 +22,3 @@ async function ProductsSection() {
     </section>
   );
 }
-
-export default ProductsSection;

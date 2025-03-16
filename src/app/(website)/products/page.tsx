@@ -1,7 +1,9 @@
 import CarCard from "@/components/website/CarCard";
 import { carTypes } from "@/types/types";
 
-async function ProductsPage() {
+export const revalidate = 0;
+
+export default async function ProductsPage() {
   const cars = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/car`)
     .then((res) => res.json())
     .then((data) => data.data);
@@ -14,5 +16,3 @@ async function ProductsPage() {
     </div>
   );
 }
-
-export default ProductsPage;
