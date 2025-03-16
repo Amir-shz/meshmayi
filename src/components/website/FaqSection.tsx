@@ -2,7 +2,7 @@ import SectionsHeader from "./SectionsHeader";
 
 function FaqSection() {
   return (
-    <section>
+    <section id="faq">
       <SectionsHeader title="سوالات متداول" />
     </section>
   );

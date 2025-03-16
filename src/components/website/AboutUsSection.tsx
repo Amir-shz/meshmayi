@@ -5,7 +5,7 @@ import SectionsHeader from "./SectionsHeader";
 
 function AboutUsSection() {
   return (
-    <section>
+    <section id="about-us">
       <SectionsHeader title="درباره ما" />
       <div className=" grid grid-cols-12 grid-rows-2 gap-8">
         <AboutCompany />

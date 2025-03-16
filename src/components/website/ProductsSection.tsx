@@ -8,7 +8,7 @@ async function ProductsSection() {
     .then((data) => data.data);
 
   return (
-    <section>
+    <section id="products">
       <SectionsHeader
         title="محصولات"
         href="/products"

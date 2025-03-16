@@ -66,7 +66,7 @@ export default function RootLayout({
   return (
     <html lang="fa" dir="rtl">
       <body
-        className={`${IranSans.className} ${IranSans.variable} antialiased`}
+        className={`${IranSans.className} ${IranSans.variable} antialiased scroll-smooth`}
       >
         {children}
       </body>

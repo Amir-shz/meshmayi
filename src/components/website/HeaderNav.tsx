@@ -3,9 +3,31 @@
 import { NAV_ITEMS } from "@/utils/utils";
 import NavItem from "./NavItem";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 function HeaderNav() {
   const pathName = usePathname();
+  const [activeSection, setActiveSection] = useState("");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.5 } // 60% از سکشن قابل مشاهده باشد، فعال شود
+    );
+
+    NAV_ITEMS.forEach(({ id }) => {
+      const section = document.getElementById(id);
+      if (section) observer.observe(section);
+    });
+
+    return () => observer.disconnect(); // پاکسازی در هنگام خروج از کامپوننت
+  }, []);
 
   return (
     <nav
@@ -14,7 +36,11 @@ function HeaderNav() {
       }`}
     >
       {NAV_ITEMS.map((navItem) => (
-        <NavItem key={navItem.id} id={navItem.id}>
+        <NavItem
+          key={navItem.id}
+          id={navItem.id}
+          active={activeSection === navItem.id}
+        >
           {navItem.title}
         </NavItem>
       ))}

@@ -2,8 +2,8 @@ import SectionsHeader from "./SectionsHeader";
 
 function ContactUsSection() {
   return (
-    <section>
-      <SectionsHeader title="تماس با ما" />
+    <section id="contact-us">
+      <SectionsHeader title="ارتباط با ما" />
     </section>
   );
 }
