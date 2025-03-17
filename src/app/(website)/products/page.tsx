@@ -1,4 +1,5 @@
 import CarCard from "@/components/website/CarCard";
+import LinkedCarCard from "@/components/website/LinkedCarCard";
 import SectionsHeader from "@/components/website/SectionsHeader";
 import { carTypes } from "@/types/types";
 
@@ -14,9 +15,14 @@ export default async function ProductsPage() {
       <div className=" col-span-full">
         <SectionsHeader title="محصولات" />
       </div>
-      <div className=" col-span-full grid grid-cols-3 gap-8 max-sm:grid-cols-1 max-sm:gap-3 ">
+      <div className=" max-sm:hidden col-span-full grid grid-cols-3 gap-8 max-sm:grid-cols-1 max-sm:gap-3 ">
         {cars.map((car: carTypes) => (
           <CarCard key={car._id} car={car} />
+        ))}
+      </div>
+      <div className=" sm:hidden col-span-full grid grid-cols-3 gap-8 max-sm:grid-cols-1 max-sm:gap-3 -mb-10">
+        {cars.map((car: carTypes) => (
+          <LinkedCarCard key={car._id} car={car} isBigSlider />
         ))}
       </div>
     </>

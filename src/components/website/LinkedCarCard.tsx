@@ -1,14 +1,25 @@
+import { carTypes } from "@/types/types";
 import { addCommas, digitsEnToFa } from "@persian-tools/persian-tools";
 import Slider from "../Slider";
-import Button from "../Button";
 import Link from "next/link";
-import { HiOutlineChevronLeft } from "react-icons/hi";
-import { carTypes } from "@/types/types";
 
-function CarCard({ car }: { car: carTypes }) {
+function LinkedCarCard({
+  car,
+  isBigSlider = false,
+}: {
+  car: carTypes;
+  isBigSlider?: boolean;
+}) {
   return (
-    <div className=" rounded-lg bg-neutral-100 border border-neutral-300 hover:border-primary-300 hover:shadow-3 overflow-hidden max-w-[34rem] flex flex-col duration-300 max-sm:max-w-full min-w-[16.5rem]">
-      <div className=" w-full h-[13.6875rem] max-sm:h-[6.625rem] relative z-10">
+    <Link
+      href={`/products/${car._id}`}
+      className=" rounded-lg bg-neutral-100 border border-neutral-300 hover:border-primary-300 hover:shadow-3 overflow-hidden max-w-[34rem] flex flex-col duration-300 max-sm:max-w-full min-w-[16.5rem]"
+    >
+      <div
+        className={`w-full h-[13.6875rem]  relative z-10 ${
+          isBigSlider ? "max-sm:h-36" : "max-sm:h-[6.625rem]"
+        }`}
+      >
         <Slider pictures={car.pictures} />
 
         <div className=" absolute left-2 top-2 z-[1000] flex flex-wrap gap-1">
@@ -54,16 +65,12 @@ function CarCard({ car }: { car: carTypes }) {
                 تومان
               </span>
             </p>
-            <Link href={`/products/${car._id}`} className=" max-sm:hidden">
-              <Button icon={<HiOutlineChevronLeft />} size="big" type="outline">
-                بیشتر
-              </Button>
-            </Link>
+            {/*  */}
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
-export default CarCard;
+export default LinkedCarCard;

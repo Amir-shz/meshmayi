@@ -30,7 +30,7 @@ function HeaderNav() {
       if (section) observer.observe(section);
     });
 
-    return () => observer.disconnect(); // پاکسازی در هنگام خروج از کامپوننت
+    return () => observer.disconnect();
   }, []);
 
   return (

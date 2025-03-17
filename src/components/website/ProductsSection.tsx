@@ -1,6 +1,7 @@
 import { carTypes } from "@/types/types";
 import CarCard from "./CarCard";
 import SectionsHeader from "./SectionsHeader";
+import LinkedCarCard from "./LinkedCarCard";
 
 export default async function ProductsSection() {
   const cars = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/getSixLastCars`)
@@ -20,15 +21,15 @@ export default async function ProductsSection() {
         ))}
       </div>
 
-      <div className=" sm:hidden space-y-3">
-        <div className=" grid grid-cols-3 gap-8 max-sm:gap-3 max-sm:overflow-scroll max-sm:flex hide-scrollbar -ml-4 ">
+      <div className=" sm:hidden flex flex-col -mb-3">
+        <div className=" grid grid-cols-3 gap-8 max-sm:gap-3 max-sm:overflow-x-scroll overflow-y-visible max-sm:flex hide-scrollbar -ml-4 pl-4 -mr-4 pr-4 pb-3">
           {cars.slice(0, 3).map((car: carTypes) => (
-            <CarCard key={car._id} car={car} />
+            <LinkedCarCard key={car._id} car={car} />
           ))}
         </div>
-        <div className=" grid grid-cols-3 gap-8 max-sm:gap-3 max-sm:overflow-scroll max-sm:flex hide-scrollbar -ml-4 ">
+        <div className=" grid grid-cols-3 gap-8 max-sm:gap-3 max-sm:overflow-x-scroll overflow-y-visible max-sm:flex hide-scrollbar -ml-4 pl-4 -mr-4 pr-4 pb-3 ">
           {cars.slice(3, 7).map((car: carTypes) => (
-            <CarCard key={car._id} car={car} />
+            <LinkedCarCard key={car._id} car={car} />
           ))}
         </div>
       </div>
