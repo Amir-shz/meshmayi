@@ -17,17 +17,18 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { HiOutlineChevronDown } from "react-icons/hi";
+import { COLORS } from "@/utils/utils";
 
-const colorsArr = [
-  {
-    value: "red",
-    label: "قرمز",
-  },
-  {
-    value: "blue",
-    label: "آبی",
-  },
-];
+// const colorsArr = [
+//   {
+//     value: "red",
+//     label: "قرمز",
+//   },
+//   {
+//     value: "blue",
+//     label: "آبی",
+//   },
+// ];
 
 function EditColors({ colors }: { colors: string[] }) {
   const [open, setOpen] = useState(false);
@@ -58,7 +59,7 @@ function EditColors({ colors }: { colors: string[] }) {
           >
             {selectedValues.length > 0
               ? selectedValues
-                  .map((val) => colorsArr.find((f) => f.value === val)?.label)
+                  .map((val) => COLORS.find((f) => f.value === val)?.label)
                   .join(", ")
               : "رنگ ها را انتخاب کنید"}
 
@@ -74,7 +75,7 @@ function EditColors({ colors }: { colors: string[] }) {
             <CommandList>
               <CommandEmpty>رنگی یافت نشد</CommandEmpty>
               <CommandGroup>
-                {colorsArr.map((color) => (
+                {COLORS.map((color) => (
                   <CommandItem
                     key={color.value}
                     value={color.value}

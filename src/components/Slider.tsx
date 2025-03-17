@@ -39,7 +39,7 @@ function Slider({ pictures, onChangeSlide = () => {} }: sliderProps) {
         className=" relative z-50 mx-auto h-full w-full overflow-hidden"
       >
         {pictures.length === 0 && (
-          <SwiperSlide className=" h-full w-full bg-primary-100">
+          <SwiperSlide className=" h-full w-full bg-primary-50">
             <p className=" flex justify-center items-center h-full">
               تصویری وجود ندارد
             </p>

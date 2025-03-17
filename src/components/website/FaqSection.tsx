@@ -25,7 +25,7 @@ function FaqSection() {
           ))}
         </Accordion>
       </div>
-      <div className=" basis-1/2 self-center max-sm:basis-auto">
+      <div className=" basis-1/2 max-sm:basis-auto">
         <Image src={faqVector} alt="faqVector" />
       </div>
     </section>

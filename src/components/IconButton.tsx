@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 interface iconButtonProps {
   size: "sm" | "lg" | "xl";
-  className: string;
+  className?: string;
   onClick: () => void;
   children: ReactNode;
 }
