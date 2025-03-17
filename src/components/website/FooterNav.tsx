@@ -7,6 +7,20 @@ import { usePathname } from "next/navigation";
 function FooterNav() {
   const pathName = usePathname();
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const section = document.getElementById(id);
+
+    if (section) {
+      const yOffset = -100;
+      const y = section.getBoundingClientRect().top + window.scrollY + yOffset;
+
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+
+    history.pushState(null, "", `#${id}`);
+  };
+
   return (
     <nav
       className={`p-1 rounded-lg border border-neutral-300 w-fit mx-auto ${
@@ -19,22 +33,14 @@ function FooterNav() {
             key={navItem.id}
             className="hover:bg-primary-50 duration-300 max-sm:text-lb2_mobile"
           >
-            <Link href={`#${navItem.id}`}>{navItem.title}</Link>
+            <Link
+              href={`#${navItem.id}`}
+              onClick={(e) => handleClick(e, navItem.id)}
+            >
+              {navItem.title}
+            </Link>
           </li>
         ))}
-
-        {/* <li className="hover:bg-primary-50 duration-300">
-          <Link href="#home">صفحه اصلی</Link>
-        </li>
-        <li className="hover:bg-primary-50 duration-300">
-          <Link href="#about-us">درباره ما</Link>
-        </li>
-        <li className="hover:bg-primary-50 duration-300">
-          <Link href="#contact-us">ارتباط با ما</Link>
-        </li>
-        <li className="hover:bg-primary-50 duration-300">
-          <Link href="#faq">سوالات متداول</Link>
-        </li> */}
       </ul>
     </nav>
   );

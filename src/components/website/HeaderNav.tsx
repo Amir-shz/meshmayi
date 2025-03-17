@@ -48,13 +48,6 @@ function HeaderNav() {
           {navItem.title}
         </NavItem>
       ))}
-      {/* <NavItem id="home" active>
-        صفحه اصلی
-      </NavItem>
-      <NavItem id="products">محصولات</NavItem>
-      <NavItem id="about-us">درباره ما</NavItem>
-      <NavItem id="contact-us">ارتباط با ما</NavItem>
-      <NavItem id="faq">سوالات متداول</NavItem> */}
     </nav>
   );
 }

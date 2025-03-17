@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 };
 function NotFound() {
   return (
-    <div className=" h-dvh w-screen flex items-center gap-36 bg-neutral-50 px-16 max-sm:flex-col max-sm:gap-20 max-sm:px-4">
-      <Image src={vector} alt="not found" className=" w-[50rem] max-sm:mt-40" />
+    <div className=" h-dvh w-screen flex items-center gap-36 bg-neutral-50 px-16 max-sm:flex-col max-sm:gap-10 max-sm:px-4">
+      <Image src={vector} alt="not found" className=" w-[50rem] max-sm:mt-32" />
       <div className=" flex flex-col text-neutral-500">
         <p className=" text-h2_SB_desktop max-sm:text-h2_SB_mobile mb-2">
           صفحه مورد نظرت پیدا نشد...
