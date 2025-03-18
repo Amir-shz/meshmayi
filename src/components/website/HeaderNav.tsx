@@ -10,27 +10,34 @@ function HeaderNav() {
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
+    const handleScroll = () => {
+      let maxPercentage = 0;
+      let currentMostVisible = null;
+
+      NAV_ITEMS.forEach(({ id }) => {
+        const section = document.getElementById(id);
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          const visibleHeight = Math.max(
+            0,
+            Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0)
+          );
+          const percentage = (visibleHeight / window.innerHeight) * 100;
+
+          if (percentage > maxPercentage) {
+            maxPercentage = percentage;
+            currentMostVisible = id;
           }
-        });
-      },
-      {
-        root: null,
-        // rootMargin: "-100px",
-        threshold: 0,
-      }
-    );
+        }
+      });
 
-    NAV_ITEMS.forEach(({ id }) => {
-      const section = document.getElementById(id);
-      if (section) observer.observe(section);
-    });
+      setActiveSection(currentMostVisible);
+    };
 
-    return () => observer.disconnect();
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
