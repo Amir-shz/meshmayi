@@ -64,6 +64,12 @@ body {
   gap: 0.25rem;
 }
 
+.swiper-slide-thumb-active img {
+  border-color: #701c1c !important; /* رنگ قرمز برای thumbnail فعال */
+  border-width: 1px;
+  box-shadow: 2px 2px 6px 0px rgba(23, 23, 23, 0.16);
+}
+
 @media not all and (min-width: 435px) {
   /* .swiper-pagination-bullet {
     width: 0.25rem;

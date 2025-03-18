@@ -4,6 +4,7 @@ import CarColors from "@/components/website/CarColors";
 import CarDescriptions from "@/components/website/CarDescriptions";
 import CarName from "@/components/website/CarName";
 import CarOptions from "@/components/website/CarOptions";
+import CarPictures from "@/components/website/CarPictures";
 import CarPrice from "@/components/website/CarPrice";
 import CarSpecifications from "@/components/website/CarSpecifications";
 import Companion from "@/components/website/Companion";
@@ -14,7 +15,7 @@ async function CarPage({ params }: { params: Promise<{ id: string }> }) {
     name,
     price,
     model,
-    // pictures,
+    pictures,
     options,
     technicalSpecifications,
     descriptions,
@@ -27,7 +28,7 @@ async function CarPage({ params }: { params: Promise<{ id: string }> }) {
     <>
       <Breadcrumbs name={name} />
       <div className=" col-span-5  flex flex-col gap-8">
-        <div className=" bg-primary-50 h-96"></div>
+        <CarPictures pictures={pictures} />
         <CarColors colors={colors} />
         <CarPrice price={price} />
       </div>
