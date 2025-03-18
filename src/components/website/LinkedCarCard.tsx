@@ -13,7 +13,7 @@ function LinkedCarCard({
   return (
     <Link
       href={`/products/${car._id}`}
-      className=" rounded-lg bg-neutral-100 border border-neutral-300 hover:border-primary-300 hover:shadow-3 overflow-hidden max-w-[34rem] flex flex-col duration-300 max-sm:max-w-full min-w-[16.5rem]"
+      className=" rounded-lg bg-neutral-100 border border-neutral-300  overflow-hidden max-w-[34rem] flex flex-col duration-300 max-sm:max-w-full min-w-[16.5rem]"
     >
       <div
         className={`w-full h-[13.6875rem]  relative z-10 ${

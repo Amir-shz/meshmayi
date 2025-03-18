@@ -33,31 +33,31 @@ function SocialsBox() {
           شبکه‌های اجتماعی
         </p>
       </div>
-      <div className=" py-3 px-10 max-sm:px-2 max-sm:py-3 rounded-lg border border-neutral-300 grid grid-cols-4 justify-items-center [&>a]:px-8 [&>a]:py-7 max-sm:[&>a]:px-6  max-sm:[&>a]:py-4 [&>a:hover]:bg-primary-50 [&>a]:rounded-lg [&>a]:border [&>a]:border-neutral-100 [&>a:hover]:border-primary-200 [&>a]:duration-300">
+      <div className=" py-3 px-10 max-sm:px-2 max-sm:py-3 rounded-lg border border-neutral-300 grid grid-cols-4 justify-items-center [&>a]:px-8 [&>a]:py-7 max-sm:[&>a]:px-6  max-sm:[&>a]:py-4 [&>a:hover]:bg-primary-50 [&>a]:rounded-lg [&>a]:border [&>a]:border-neutral-100 [&>a:hover]:border-primary-200 [&>a]:duration-300  max-sm:[&>a:hover]:border-transparent  max-sm:[&>a:hover]:bg-transparent">
         <Link
           target="_blank"
-          className="[&_path]:hover:fill-primary-500 [&_path]:duration-300"
+          className="[&_path]:hover:fill-primary-500 max-sm:[&_path]:hover:fill-neutral-500 [&_path]:duration-300"
           href={`${TELEGRAM_LINK}`}
         >
           <TelegramIcon />
         </Link>
         <Link
           target="_blank"
-          className="[&_path]:hover:fill-primary-500 [&_path]:duration-300"
+          className="[&_path]:hover:fill-primary-500 max-sm:[&_path]:hover:fill-neutral-500 [&_path]:duration-300"
           href={`${WHATSAPP_LINK}`}
         >
           <WhatsappIcon />
         </Link>
         <Link
           target="_blank"
-          className="[&_path]:hover:fill-primary-500 [&_path]:duration-300"
+          className="[&_path]:hover:fill-primary-500 max-sm:[&_path]:hover:fill-neutral-500 [&_path]:duration-300"
           href={`${INSTAGRAM_LINK}`}
         >
           <InstagramIcon />
         </Link>
         <Link
           target="_blank"
-          className="[&_path]:hover:fill-primary-500 [&_path]:duration-300"
+          className="[&_path]:hover:fill-primary-500 max-sm:[&_path]:hover:fill-neutral-500 [&_path]:duration-300"
           href={`${LINKEDIN_LINK}`}
         >
           <LinkedinIcon />
