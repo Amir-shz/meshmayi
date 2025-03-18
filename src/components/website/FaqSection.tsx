@@ -8,12 +8,12 @@ import { FAQ_ITEMS } from "@/utils/utils";
 
 function FaqSection() {
   return (
-    <section id="faq" className=" flex gap-7 max-sm:flex-col max-sm:gap-4">
+    <section id="faq" className=" flex gap-7 max-lg:flex-col max-lg:gap-4">
       <div className=" basis-1/2 max-sm:basis-auto">
         <SectionsHeader title="سوالات متداول" />
         <Accordion
           type="multiple"
-          className="w-full space-y-4 max-sm:space-y-3"
+          className="w-full space-y-4 max-lg:space-y-3"
         >
           {FAQ_ITEMS.map((faq) => (
             <FaqItem

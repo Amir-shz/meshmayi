@@ -12,7 +12,7 @@ import {
 
 function SocialsBox() {
   return (
-    <div className=" p-6 pb-5 max-sm:p-4 rounded-lg border border-neutral-300 bg-neutral-100 flex flex-col gap-5 max-sm:gap-4">
+    <div className=" max-lg:col-span-full p-6 pb-5 max-sm:p-4 rounded-lg border border-neutral-300 bg-neutral-100 flex flex-col gap-5 max-sm:gap-4">
       <div className=" flex items-center gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -15,7 +15,7 @@ export default async function ProductsSection() {
         href="/products"
         linkTitle="محصولات بیشتر"
       />
-      <div className=" grid grid-cols-3 gap-8 max-sm:hidden">
+      <div className=" grid grid-cols-3 gap-8 max-lg:gap-4 max-sm:hidden">
         {cars.map((car: carTypes) => (
           <CarCard key={car._id} car={car} />
         ))}

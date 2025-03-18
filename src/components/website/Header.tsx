@@ -12,10 +12,10 @@ function Header() {
 
   return (
     <header className=" fixed top-0 left-1/2 -translate-x-1/2 w-full grid grid-cols-12 gap-8 py-4 max-sm:py-3 bg-neutral-50 z-50 ">
-      <div className=" flex justify-between items-center col-span-full mx-12 max-sm:mx-4">
+      <div className=" flex justify-between items-center col-span-full mx-12 max-sm:mx-4 max-lg:mx-8">
         <HeaderBtn />
         <div
-          className={` flex items-center gap-4 max-sm:gap-2 ${
+          className={` flex items-center gap-4 max-sm:gap-2 max-xl:gap-2 ${
             pathName !== "/" && "max-sm:hidden"
           }`}
         >

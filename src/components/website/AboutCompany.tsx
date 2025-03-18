@@ -1,6 +1,6 @@
 function AboutCompany() {
   return (
-    <div className=" col-span-5 row-span-2 p-6 max-sm:p-4 rounded-lg border border-neutral-300 bg-neutral-100 flex flex-col gap-4 max-sm:gap-3 max-sm:col-span-full">
+    <div className=" col-span-5 max-lg:col-span-full row-span-2 p-6 max-sm:p-4 rounded-lg border border-neutral-300 bg-neutral-100 flex flex-col gap-4 max-sm:gap-3 max-sm:col-span-full">
       <div className=" flex items-center gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"

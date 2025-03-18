@@ -11,7 +11,7 @@ function HeaderBtn() {
   const router = useRouter();
 
   return (
-    <div className=" sm:hidden flex items-center justify-center">
+    <div className=" lg:hidden flex items-center justify-center">
       {pathName === "/" ? (
         <button onClick={() => setIsOpen(!isOpen)}>
           <HiOutlineMenu className=" size-6" />

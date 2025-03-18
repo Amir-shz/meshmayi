@@ -63,7 +63,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fa" dir="rtl">
+    <html lang="fa" dir="rtl" className="max-2xl:text-[93.75%]">
       <body
         className={`${IranSans.className} ${IranSans.variable} antialiased scroll-smooth bg-neutral-50`}
       >

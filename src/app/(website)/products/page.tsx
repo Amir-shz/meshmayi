@@ -15,7 +15,7 @@ export default async function ProductsPage() {
       <div className=" col-span-full">
         <SectionsHeader title="محصولات" />
       </div>
-      <div className=" max-sm:hidden col-span-full grid grid-cols-3 gap-8 max-sm:grid-cols-1 max-sm:gap-3 ">
+      <div className=" max-sm:hidden col-span-full grid grid-cols-3 max-[850px]:grid-cols-2 gap-8 max-lg:gap-4 max-sm:grid-cols-1 max-sm:gap-3 ">
         {cars.map((car: carTypes) => (
           <CarCard key={car._id} car={car} />
         ))}

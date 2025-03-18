@@ -8,10 +8,10 @@ function layout({
 }>) {
   return (
     <div className="bg-neutral-50">
-      <div className="relative mx-12 max-sm:mx-4">
+      <div className="relative mx-12 max-sm:mx-4 max-lg:mx-8">
         <Header />
         {/* container */}
-        <div className="grid grid-cols-12 gap-x-8 mx-auto pt-[7.25rem] max-sm:grid-cols-4 max-sm:gap-x-3">
+        <div className="grid grid-cols-12 gap-x-8 mx-auto pt-[7.25rem] max-md:pt-[6rem] max-sm:grid-cols-4 max-sm:gap-x-3">
           {children}
           <Footer />
         </div>

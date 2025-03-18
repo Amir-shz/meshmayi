@@ -35,7 +35,7 @@ function HeaderNav() {
 
   return (
     <nav
-      className={`flex gap-10 translate-x-20 max-sm:hidden ${
+      className={`flex gap-10 2xl:translate-x-20 max-lg:hidden xl:translate-x-10 max-xl:gap-4 max-lg:gap-2 ${
         pathName !== "/" ? "hidden" : "block"
       }`}
     >

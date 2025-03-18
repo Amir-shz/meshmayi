@@ -7,7 +7,7 @@ function AboutUsSection() {
   return (
     <section id="about-us">
       <SectionsHeader title="درباره ما" />
-      <div className=" grid grid-cols-12 grid-rows-2 gap-8 max-sm:grid-cols-1 max-sm:grid-rows-none max-sm:gap-4">
+      <div className=" grid grid-cols-12 grid-rows-2 gap-8 max-lg:gap-4 max-sm:grid-cols-1 max-sm:grid-rows-none max-sm:gap-4">
         <AboutCompany />
         <HistoryInAbout />
         <LocationInAbout />

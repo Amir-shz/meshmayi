@@ -2,7 +2,7 @@ import MapLocation from "./MapLocation";
 
 function LocationInAbout() {
   return (
-    <div className=" col-span-7 p-6  max-sm:p-4 rounded-lg border border-neutral-300 bg-neutral-100 max-sm:col-span-full">
+    <div className=" col-span-7 max-lg:col-span-6 p-6  max-sm:p-4 rounded-lg border border-neutral-300 bg-neutral-100 max-sm:col-span-full">
       <div className="text-neutral-500 font-medium text-lg leading-[2.125rem] max-sm:leading-[130%] max-sm:text-[0.87813rem] flex items-center h-full gap-6 max-sm:flex-col max-sm:gap-3">
         <div className=" basis-1/2 space-y-4 self-start max-sm:space-y-3 max-sm:basis-auto ">
           <div className=" flex items-center gap-2">
