@@ -66,7 +66,7 @@ export default function RootLayout({
     <html
       lang="fa"
       dir="rtl"
-      className="max-2xl:text-[93.75%] lg:text-[87.5%] xl:text-[93.75%] 2xl:text-[112.5%]"
+      className="max-2xl:text-[93.75%] lg:text-[87.5%] xl:text-[93.75%] 3xl:text-[112.5%]"
     >
       <body
         className={`${IranSans.className} ${IranSans.variable} antialiased scroll-smooth bg-neutral-50`}
