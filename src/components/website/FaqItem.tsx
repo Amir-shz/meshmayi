@@ -31,7 +31,7 @@ function FaqItem({ question, answer, id }: faqItemProps) {
       >
         <div className=" flex items-center gap-2">
           <HiOutlineQuestionMarkCircle className="size-8 max-sm:size-6 text-primary-500" />
-          <p className="text-h5_SB_desktop max-sm:text-p2_SB_desktop text-neutral-800 text-right">
+          <p className="text-h5_SB_desktop leading-8 max-sm:leading-[1.32rem] max-sm:text-p2_SB_desktop text-neutral-800 text-right">
             {question}
           </p>
         </div>
