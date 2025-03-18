@@ -3,6 +3,12 @@ import InstagramIcon from "../icons/InstagramIcon";
 import LinkedinIcon from "../icons/LinkedinIcon";
 import TelegramIcon from "../icons/TelegramIcon";
 import WhatsappIcon from "../icons/WhatsappIcon";
+import {
+  INSTAGRAM_LINK,
+  LINKEDIN_LINK,
+  TELEGRAM_LINK,
+  WHATSAPP_LINK,
+} from "@/utils/utils";
 
 function SocialsBox() {
   return (
@@ -29,26 +35,30 @@ function SocialsBox() {
       </div>
       <div className=" py-3 px-10 max-sm:px-2 max-sm:py-3 rounded-lg border border-neutral-300 grid grid-cols-4 justify-items-center [&>a]:px-8 [&>a]:py-7 max-sm:[&>a]:px-6  max-sm:[&>a]:py-4 [&>a:hover]:bg-primary-50 [&>a]:rounded-lg [&>a]:border [&>a]:border-neutral-100 [&>a:hover]:border-primary-200 [&>a]:duration-300">
         <Link
+          target="_blank"
           className="[&_path]:hover:fill-primary-500 [&_path]:duration-300"
-          href=""
+          href={`${TELEGRAM_LINK}`}
         >
           <TelegramIcon />
         </Link>
         <Link
+          target="_blank"
           className="[&_path]:hover:fill-primary-500 [&_path]:duration-300"
-          href=""
+          href={`${WHATSAPP_LINK}`}
         >
           <WhatsappIcon />
         </Link>
         <Link
+          target="_blank"
           className="[&_path]:hover:fill-primary-500 [&_path]:duration-300"
-          href=""
+          href={`${INSTAGRAM_LINK}`}
         >
           <InstagramIcon />
         </Link>
         <Link
+          target="_blank"
           className="[&_path]:hover:fill-primary-500 [&_path]:duration-300"
-          href=""
+          href={`${LINKEDIN_LINK}`}
         >
           <LinkedinIcon />
         </Link>

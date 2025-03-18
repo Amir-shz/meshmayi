@@ -13,7 +13,7 @@ function Header() {
           <Logo />
           <Link href="/">
             <h2 className=" text-h5_B_desktop max-sm:text-h5_SB_mobile text-primary-500">
-              شرکت زرسازان بهرو
+              زرسازان بهرو
             </h2>
           </Link>
         </div>

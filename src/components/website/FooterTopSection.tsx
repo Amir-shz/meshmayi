@@ -5,6 +5,8 @@ import {
 } from "react-icons/hi";
 import Logo from "../Logo";
 import MapLocation from "./MapLocation";
+import { EMAIL, PHONE_NUMBER } from "@/utils/utils";
+import { digitsEnToFa } from "@persian-tools/persian-tools";
 
 function FooterTopSection() {
   return (
@@ -19,14 +21,12 @@ function FooterTopSection() {
         <div className=" text-neutral-500 flex gap-4 items-center max-sm:flex-col max-sm:gap-1">
           <HiOutlinePhone className=" size-10 ml-4 max-sm:size-6 max-sm:ml-0" />
           <p className="text-h5_B_desktop max-sm:text-p1_M_mobile">
-            ۰۹۱۳۱۲۳۴۵۶۷
+            {digitsEnToFa(PHONE_NUMBER)}
           </p>
         </div>
         <div className=" text-neutral-500 flex gap-4 items-center max-sm:flex-col max-sm:gap-1">
           <HiOutlineMail className=" size-10 ml-4 max-sm:size-6 max-sm:ml-0" />
-          <p className="text-h5_B_desktop max-sm:text-p1_M_mobile">
-            omid.uxwork@gmail.com
-          </p>
+          <p className="text-h5_B_desktop max-sm:text-p1_M_mobile">{EMAIL}</p>
         </div>
       </div>
       <div className="max-w-sm max-sm:max-w-full">

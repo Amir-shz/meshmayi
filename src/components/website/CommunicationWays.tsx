@@ -1,3 +1,5 @@
+import { EMAIL, PHONE_NUMBER } from "@/utils/utils";
+import { digitsEnToFa } from "@persian-tools/persian-tools";
 import { HiOutlineMail, HiOutlinePhone } from "react-icons/hi";
 
 function CommunicationWays() {
@@ -24,13 +26,13 @@ function CommunicationWays() {
       <div className=" p-4 rounded-lg border border-neutral-300 flex items-center justify-between flex-wrap max-sm:flex-col-reverse max-sm:items-end max-sm:flex-nowrap  ">
         <div className=" flex items-center gap-1 py-3 px-6 max-sm:px-4 max-sm:py-2 max-sm:w-full max-sm:justify-end  hover:bg-primary-50 duration-300 hover:border-primary-200 border border-neutral-100 rounded-lg ">
           <p className=" text-h5_B_desktop max-sm:text-h5_SB_mobile text-neutral-500">
-            ۰۹۱۳۲۳۴۵۶۷۸
+            {digitsEnToFa(PHONE_NUMBER)}
           </p>
           <HiOutlinePhone className=" size-14 max-sm:size-8 m-4 max-sm:m-2 text-neutral-500 max-sm:shrink-0" />
         </div>
         <div className=" flex items-center gap-1 py-3 px-6 max-sm:px-4 max-sm:py-2 max-sm:w-full  max-sm:justify-end hover:bg-primary-50 duration-300 hover:border-primary-200 border border-neutral-100 rounded-lg">
           <p className=" text-h5_B_desktop max-sm:text-h5_SB_mobile text-neutral-500">
-            omid@gmail.com
+            {EMAIL}
           </p>
           <HiOutlineMail className=" size-14 max-sm:size-8 m-4 max-sm:m-2 text-neutral-500 max-sm:shrink-0" />
         </div>
