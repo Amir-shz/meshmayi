@@ -16,7 +16,7 @@ function Header() {
         <HeaderBtn />
         <div
           className={` flex items-center gap-4 max-sm:gap-2 ${
-            pathName !== "/" && "hidden"
+            pathName !== "/" && "max-sm:hidden"
           }`}
         >
           <Logo />

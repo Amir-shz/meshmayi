@@ -1,10 +1,14 @@
 export const PHONE_NUMBER = "09901094933";
 
 export const EMAIL = "Zarsazanbehro@gmail.com";
+
 export const INSTAGRAM_LINK = "https://www.instagram.com/zarsazan.ararat";
+
 export const LINKEDIN_LINK =
   "https://www.linkedin.com/in/jamal-meshmayi-7a1237a4/";
+
 export const TELEGRAM_LINK = "https://t.me/Agirtav";
+
 export const WHATSAPP_LINK = "https://wa.me/989901094933";
 
 export const NAV_ITEMS = [
