@@ -7,9 +7,9 @@ import {
   DialogPortal,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { updateCarPictures } from "@/lib/actions/car";
+// import { updateCarPictures } from "@/lib/actions/car";
 import { useRef, useState } from "react";
-import { HiOutlineSave, HiOutlineTrash, HiPlus } from "react-icons/hi";
+import { HiOutlineTrash, HiPlus, HiX } from "react-icons/hi";
 
 function EditPicturesModal({
   showEditModal,
@@ -18,8 +18,8 @@ function EditPicturesModal({
   setPictures,
   onAddPicture,
   setNewPicturesFile,
-  newPicturesFile,
-}: {
+}: // newPicturesFile,
+{
   showEditModal: boolean;
   setShowEditModal: React.Dispatch<React.SetStateAction<boolean>>;
   pictures: { _id: string; src: string }[];
@@ -30,7 +30,7 @@ function EditPicturesModal({
   setNewPicturesFile: React.Dispatch<
     React.SetStateAction<{ _id: string; src?: string; file?: File }[]>
   >;
-  newPicturesFile: { _id: string; src?: string; file?: File }[];
+  // newPicturesFile: { _id: string; src?: string; file?: File }[];
 }) {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -44,6 +44,7 @@ function EditPicturesModal({
   }
 
   async function handleSubmit() {
+    /*
     const formData = new FormData();
 
     // newPicturesFile.forEach((file) =>
@@ -61,6 +62,7 @@ function EditPicturesModal({
     });
 
     await updateCarPictures(formData);
+    */
 
     setShowEditModal(false);
   }
@@ -78,14 +80,19 @@ function EditPicturesModal({
               <p className=" text-p1_SB_desktop text-neutral-800">
                 ویرایش تصویر
               </p>
-              <Button
+              <HiX
+                size={24}
+                onClick={handleSubmit}
+                className=" cursor-pointer"
+              />
+              {/* <Button
                 size="big"
                 type="filled"
                 icon={<HiOutlineSave />}
                 onClick={() => handleSubmit()}
               >
                 ذخیره تغییرات
-              </Button>
+              </Button> */}
             </div>
             <div className=" mt-0 w-full grid grid-cols-10 gap-6 py-10 pl-6 pr-10">
               <div className=" col-span-6 rounded-xl overflow-hidden h-[15.1875rem] ">

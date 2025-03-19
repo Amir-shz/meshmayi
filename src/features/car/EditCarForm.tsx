@@ -88,6 +88,7 @@ function EditCarForm({
       <div className=" grid grid-cols-7 gap-8 px-8 overflow-y-scroll max-h-full pt-8 pb-28 hide-scrollbar">
         <div className=" col-span-3">
           <EditPictures
+            // id={car._id}
             pictures={car.pictures}
             newPicturesFile={newPicturesFile}
             setNewPicturesFile={setNewPicturesFile}

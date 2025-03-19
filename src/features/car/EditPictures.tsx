@@ -6,10 +6,12 @@ import { HiOutlinePencil, HiPlus } from "react-icons/hi";
 import EditPicturesModal from "./EditPicturesModal";
 
 function EditPictures({
+  // id,
   pictures,
   newPicturesFile,
   setNewPicturesFile,
 }: {
+  // id: string;
   pictures: { _id: string; src: string }[];
   newPicturesFile: { _id: string; src?: string; file?: File }[];
   setNewPicturesFile: React.Dispatch<
@@ -74,7 +76,7 @@ function EditPictures({
           setPictures={setPicturesInput}
           onAddPicture={handleAddPicture}
           setNewPicturesFile={setNewPicturesFile}
-          newPicturesFile={newPicturesFile}
+          // newPicturesFile={newPicturesFile}
         />
       </div>
     </>

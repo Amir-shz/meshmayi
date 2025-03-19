@@ -5,6 +5,18 @@ import { digitsFaToEn, removeCommas } from "@persian-tools/persian-tools";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import dbConnect from "../mongoose";
+import { S3 } from "aws-sdk";
+
+const accessKeyId = process.env.LIARA_ACCESS_KEY as string;
+const secretAccessKey = process.env.LIARA_SECRET_KEY as string;
+const endpoint = process.env.LIARA_ENDPOINT as string;
+const bucket = process.env.LIARA_BUCKET_NAME as string;
+
+const s3 = new S3({
+  accessKeyId,
+  secretAccessKey,
+  endpoint,
+});
 
 // EDIT CAR SERVER ACTION
 
@@ -17,7 +29,9 @@ export async function editCar(formdata: FormData) {
   const descriptions = formdata.getAll("description");
   const options = formdata.getAll("option");
   const labels = formdata.getAll("label");
-  const picturesSrc = formdata.getAll("picturesSrc");
+  // const picturesSrc = formdata.getAll("picturesSrc");
+  const picturesFiles = formdata.getAll("picturesFiles");
+  const picturesSrc = formdata.getAll("picturesSrc") as Array<string>;
 
   const technicalSpecificationLabel = formdata.getAll(
     "technicalSpecificationLabel"
@@ -33,7 +47,17 @@ export async function editCar(formdata: FormData) {
     })
   );
 
-  // ** task **  upload new pictures
+  const picLinks = [...picturesSrc];
+
+  if (picturesFiles) {
+    for (const file of picturesFiles) {
+      const myFile = file as File;
+
+      const buffer = Buffer.from(await myFile.arrayBuffer());
+      const location = await uploadFileToS3(buffer, myFile.name);
+      if (location) picLinks.push(location);
+    }
+  }
 
   await dbConnect();
 
@@ -48,7 +72,7 @@ export async function editCar(formdata: FormData) {
       labels,
       options,
       technicalSpecifications,
-      pictures: picturesSrc.map((src) => ({ src })),
+      pictures: picLinks.map((src) => ({ src })),
     },
     { new: true }
   );
@@ -68,6 +92,8 @@ export async function createCar(formdata: FormData) {
   const options = formdata.getAll("option");
   const labels = formdata.getAll("label");
   // const picturesSrc = formdata.getAll("picturesSrc");
+  const picturesFiles = formdata.getAll("picturesFiles");
+  const picturesSrc = formdata.getAll("picturesSrc") as Array<string>;
 
   const technicalSpecificationLabel = formdata.getAll(
     "technicalSpecificationLabel"
@@ -83,7 +109,17 @@ export async function createCar(formdata: FormData) {
     })
   );
 
-  // ** task **  upload new pictures
+  const picLinks = [...picturesSrc];
+
+  if (picturesFiles) {
+    for (const file of picturesFiles) {
+      const myFile = file as File;
+
+      const buffer = Buffer.from(await myFile.arrayBuffer());
+      const location = await uploadFileToS3(buffer, myFile.name);
+      if (location) picLinks.push(location);
+    }
+  }
 
   await dbConnect();
 
@@ -96,10 +132,8 @@ export async function createCar(formdata: FormData) {
     labels,
     options,
     technicalSpecifications,
-    // pictures: picturesSrc.map((src) => ({ src })),
+    pictures: picLinks.map((src) => ({ src })),
   });
-
-  // console.log(formdata);
 
   revalidatePath("/dashboard/cars");
   redirect("/dashboard/cars");
@@ -115,6 +149,42 @@ export async function deleteCar(id: string) {
 
 // UPDATE CAR PICTURES SERVER ACTION
 
-export async function updateCarPictures(formdata: FormData) {
-  console.log(formdata);
+// export async function updateCarPictures(formdata: FormData) {
+//   const picturesFiles = formdata.getAll("picturesFiles");
+//   const picturesSrc = formdata.getAll("picturesSrc") as Array<string>;
+
+//   console.log(formdata);
+
+//   const picLinks = [...picturesSrc];
+
+//   if (picturesFiles) {
+//     await dbConnect();
+//     picturesFiles.map(async (file) => {
+//       const myFile = file as File;
+
+//       const buffer = Buffer.from(await myFile.arrayBuffer());
+//       const location = await uploadFileToS3(buffer, myFile.name);
+//       if (location) picLinks.push(location);
+//     });
+//   }
+// }
+
+async function uploadFileToS3(file: Buffer<ArrayBufferLike>, fileName: string) {
+  const fileBuffer = file;
+
+  const params = {
+    Bucket: bucket,
+    Key: `${fileName}${Date.now()}`,
+    Body: fileBuffer,
+    ContentType: "image/jpeg",
+    ACL: "public-read",
+  };
+
+  try {
+    const response = await s3.upload(params).promise();
+
+    return response.Location;
+  } catch (error) {
+    console.log(error);
+  }
 }
