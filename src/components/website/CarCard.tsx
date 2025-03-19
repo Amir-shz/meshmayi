@@ -34,8 +34,8 @@ function CarCard({ car }: { car: carTypes }) {
             <p className=" text-neutral-600 text-p2_M_desktop max-sm:text-p3_M_mobile">
               امکانات
             </p>
-            <div className=" flex flex-wrap gap-2 w-full">
-              {car.options.map((option, index) => (
+            <div className=" flex flex-wrap gap-2 w-full max-h-[4.5rem] overflow-y-hidden">
+              {car.options.slice(0, 7).map((option, index) => (
                 <p
                   key={index}
                   className=" rounded-lg border border-neutral-300 bg-neutral-200 text-p3_M_desktop text-neutral-700 px-3 py-1 max-sm:px-2 max-sm:text-lb2_mobile"
@@ -43,6 +43,11 @@ function CarCard({ car }: { car: carTypes }) {
                   {option}
                 </p>
               ))}
+              {car.options.length > 7 && (
+                <p className="rounded-lg border border-neutral-300 bg-neutral-200 text-p3_M_desktop text-neutral-700 px-3 py-1 max-sm:px-2 max-sm:text-lb2_mobile">
+                  ...
+                </p>
+              )}
             </div>
           </div>
           <div className=" flex justify-between items-center mt-auto">
