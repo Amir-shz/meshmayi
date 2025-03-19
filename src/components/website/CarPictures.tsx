@@ -5,55 +5,65 @@ import { useState } from "react";
 import "swiper/css";
 import "swiper/css/thumbs";
 import PicturesModal from "./PicturesModal";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Thumbs } from "swiper/modules";
+import { Swiper as swiperType } from "swiper/types";
 
 function CarPictures({
   pictures,
 }: {
   pictures: { src: string; _id: string }[];
 }) {
-  const [activePic, setActivePic] = useState<string | null>(null);
+  const [thumbsSwiper, setThumbsSwiper] = useState<null | swiperType>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
     <>
       <div>
-        {activePic ? (
-          <Image
-            width={640}
-            height={640}
-            src={activePic}
-            alt="car picture"
-            className=" rounded-xl mb-2 h-72"
-          />
-        ) : pictures[0]?.src ? (
-          <Image
-            width={640}
-            height={640}
-            src={pictures[0].src}
-            alt="car picture"
-            className=" rounded-xl mb-2 h-72"
-          />
-        ) : (
-          <div className="rounded-xl mb-2 h-72 bg-primary-50 flex items-center justify-center">
-            تصویری وجود ندارد
-          </div>
-        )}
-
-        <div className="grid grid-cols-5 gap-8">
-          {pictures.slice(0, 4).map((picture) => (
-            <Image
-              key={picture._id}
-              src={picture.src}
-              width={200}
-              height={200}
-              alt="car picture"
-              onClick={() => setActivePic(picture.src)}
-              className=" rounded border border-neutral-400 h-12 cursor-pointer"
-            />
+        <Swiper
+          allowTouchMove={false}
+          thumbs={{ swiper: thumbsSwiper }}
+          modules={[Thumbs]}
+          className=" rounded-xl mb-2 h-72 col-span-full"
+        >
+          {pictures.slice(0, 4).map((picture, index) => (
+            <SwiperSlide key={picture._id} className=" h-full">
+              <Image
+                width={1280}
+                height={1280}
+                src={picture.src}
+                alt={`Car ${index + 1}`}
+                className=" h-full object-cover object-center w-full"
+              />
+            </SwiperSlide>
           ))}
+        </Swiper>
+        <div className=" grid grid-cols-5 gap-8">
+          <Swiper
+            onSwiper={setThumbsSwiper}
+            slidesPerView={4}
+            spaceBetween={32}
+            modules={[Thumbs]}
+            className="h-12 col-span-4 w-full"
+          >
+            {pictures.slice(0, 4).map((picture, index) => (
+              <SwiperSlide
+                key={picture._id}
+                className=" h-full rounded overflow-hidden "
+              >
+                <Image
+                  width={1280}
+                  height={1280}
+                  src={picture.src}
+                  alt={`Car ${index + 1}`}
+                  className=" h-full object-cover object-center w-full cursor-pointer"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
           {pictures.length > 4 && (
             <button
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => setIsOpen(true)}
               className="rounded border border-neutral-400 bg-neutral-200 text-neutral-400 text-p4_M_desktop size-full"
             >
               عکس‌های بیشتر
