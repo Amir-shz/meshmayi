@@ -26,6 +26,13 @@ function CarPictures({
           modules={[Thumbs]}
           className=" rounded-xl mb-2 h-72 col-span-full"
         >
+          {pictures.length === 0 && (
+            <SwiperSlide className=" size-full bg-primary-50">
+              <p className=" size-full flex justify-center items-center text-primary-700 font-semibold text-lg">
+                تصویری وجود ندارد
+              </p>
+            </SwiperSlide>
+          )}
           {pictures.slice(0, 4).map((picture, index) => (
             <SwiperSlide key={picture._id} className=" h-full">
               <Image
@@ -38,7 +45,11 @@ function CarPictures({
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className=" grid grid-cols-5 gap-8">
+        <div
+          className={`grid grid-cols-5 gap-8 ${
+            pictures.length === 0 && "hidden"
+          }`}
+        >
           <Swiper
             onSwiper={setThumbsSwiper}
             slidesPerView={4}
