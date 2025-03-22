@@ -19,7 +19,7 @@ export default function HomePage() {
       <HeroSection />
       <Suspense
         fallback={
-          <>
+          <div>
             <SectionsHeader
               title="محصولات"
               href="/products"
@@ -37,7 +37,7 @@ export default function HomePage() {
               <div></div>
               <div></div>
             </div>
-          </>
+          </div>
         }
       >
         <ProductsSection />
