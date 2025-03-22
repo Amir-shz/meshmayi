@@ -3,7 +3,7 @@ import LinkedCarCard from "@/components/website/LinkedCarCard";
 import SectionsHeader from "@/components/website/SectionsHeader";
 import { carTypes } from "@/types/types";
 
-export const revalidate = 0;
+export const revalidate = 60;
 
 export default async function ProductsPage() {
   const cars = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/car`)
