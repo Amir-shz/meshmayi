@@ -4,6 +4,7 @@ import Button from "@/components/Button";
 import Logo from "@/components/Logo";
 import TextField from "@/components/TextField";
 import { login } from "@/lib/actions/auth";
+import Link from "next/link";
 import { useActionState, useState } from "react";
 
 const initialState = {
@@ -20,7 +21,9 @@ function LoginForm() {
   return (
     <form action={formAction}>
       <div className="mb-6 flex flex-col items-center justify-center gap-4">
-        <Logo />
+        <Link href="/">
+          <Logo />
+        </Link>
         <p className=" text-black text-h4_B_desktop">صفحه ورود به داشبورد</p>
       </div>
       <div className=" flex flex-col gap-8">

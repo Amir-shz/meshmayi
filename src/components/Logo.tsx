@@ -1,6 +1,14 @@
+import Image from "next/image";
+
 function Logo() {
   return (
-    <div className=" size-14 flex justify-center items-center rounded-full bg-primary-50"></div>
+    <Image
+      src="/logo.png"
+      width={1000}
+      height={1000}
+      className=" size-14"
+      alt="zarsazan behro"
+    />
   );
 }
 

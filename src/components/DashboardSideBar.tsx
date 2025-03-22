@@ -7,7 +7,7 @@ function DashboardSideBar() {
     <aside className=" col-span-3 bg-primary-500 rounded-e-3xl">
       <div className="mr-8 mt-8 flex items-center gap-4">
         <Logo />
-        <p className=" text-h6_B_desktop text-neutral-50">اسم شرکت یا سایت</p>
+        <p className=" text-h6_B_desktop text-neutral-50">زرسازان بهرو</p>
       </div>
       <div className="mx-8 mt-12">
         <DashboardSideBarButtonLink

@@ -19,8 +19,8 @@ function Header() {
             pathName !== "/" && "max-sm:hidden"
           }`}
         >
-          <Logo />
-          <Link href="/">
+          <Link href="/" className=" flex items-center gap-2">
+            <Logo />
             <h2 className=" text-h5_B_desktop max-sm:text-h5_SB_mobile text-primary-500">
               زرسازان بهرو
             </h2>
