@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "@/styles/globals.css";
 import PWAInstallPrompt from "@/components/website/PWAInstallPrompt";
+import { Toaster } from "@/components/ui/toaster";
 
 const IranSans = localFont({
   src: [
@@ -74,6 +75,7 @@ export default function RootLayout({
       >
         {children}
         <PWAInstallPrompt />
+        <Toaster />
       </body>
     </html>
   );
