@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "@/styles/globals.css";
+// import PWAInstallPrompt from "@/components/website/PWAInstallPrompt";
 
 const IranSans = localFont({
   src: [
@@ -72,6 +73,7 @@ export default function RootLayout({
         className={`${IranSans.className} ${IranSans.variable} antialiased scroll-smooth bg-neutral-50`}
       >
         {children}
+        {/* <PWAInstallPrompt /> */}
       </body>
     </html>
   );
