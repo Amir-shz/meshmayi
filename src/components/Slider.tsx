@@ -39,8 +39,8 @@ function Slider({ pictures, onChangeSlide = () => {} }: sliderProps) {
         className=" relative z-50 mx-auto h-full w-full overflow-hidden"
       >
         {pictures.length === 0 && (
-          <SwiperSlide className=" h-full w-full bg-primary-50">
-            <p className=" flex justify-center items-center h-full">
+          <SwiperSlide className=" h-full  w-full bg-primary-50">
+            <p className=" flex justify-center items-center w-full aspect-[2/1]">
               تصویری وجود ندارد
             </p>
           </SwiperSlide>
@@ -52,7 +52,7 @@ function Slider({ pictures, onChangeSlide = () => {} }: sliderProps) {
               alt="car"
               width={250}
               height={250}
-              className=" h-full object-cover object-center w-full"
+              className=" aspect-[2/1]  object-cover object-center w-full"
             />
           </SwiperSlide>
         ))}

@@ -5,21 +5,17 @@ import Link from "next/link";
 
 function LinkedCarCard({
   car,
-  isBigSlider = false,
-}: {
+}: // isBigSlider = false,
+{
   car: carTypes;
-  isBigSlider?: boolean;
+  // isBigSlider?: boolean;
 }) {
   return (
     <Link
       href={`/products/${car._id}`}
       className=" rounded-lg bg-neutral-100 border border-neutral-300  overflow-hidden max-w-[34rem] flex flex-col duration-300 max-sm:max-w-full min-w-[16.5rem]"
     >
-      <div
-        className={`w-full h-[13.6875rem]  relative z-10 ${
-          isBigSlider ? "max-sm:h-36" : "max-sm:h-[6.625rem]"
-        }`}
-      >
+      <div className={`w-full relative z-10`}>
         <Slider pictures={car.pictures} />
 
         <div className=" absolute left-2 top-2 z-[1000] flex flex-wrap gap-1">
