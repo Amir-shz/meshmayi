@@ -114,17 +114,15 @@ const PWAInstallPrompt = () => {
     useState<BeforeInstallPromptEvent | null>(null);
   const { toast } = useToast();
 
-  // تابع بررسی وضعیت نصب
   const isAppInstalled = () => {
     return (
-      window.matchMedia("(display-mode: standalone)").matches || // بررسی در اندروید و دسکتاپ
+      window.matchMedia("(display-mode: standalone)").matches ||
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (window.navigator as any)?.standalone === true // بررسی در iOS
+      (window.navigator as any)?.standalone === true
     );
   };
 
   useEffect(() => {
-    // اگر نصب است یا قبلاً در همین سشن نمایش داده شده، از نمایش جلوگیری می‌کند
     if (isAppInstalled() || sessionStorage.getItem("pwa-prompt-shown")) return;
 
     const handleBeforeInstallPrompt = (event: Event) => {
@@ -167,7 +165,7 @@ const PWAInstallPrompt = () => {
   useEffect(() => {
     if (!promptEvent || sessionStorage.getItem("pwa-prompt-shown")) return;
 
-    sessionStorage.setItem("pwa-prompt-shown", "true"); // جلوگیری از نمایش مجدد در همان سشن
+    sessionStorage.setItem("pwa-prompt-shown", "true");
 
     toast({
       title: "",
@@ -201,13 +199,12 @@ const PWAInstallPrompt = () => {
     });
   }, [toast, promptEvent]);
 
-  // بررسی وضعیت نصب در هر بار رندر
   useEffect(() => {
     const checkInstallStatus = setInterval(() => {
       if (!isAppInstalled()) {
         sessionStorage.removeItem("pwa-installed");
       }
-    }, 10000); // هر 5 ثانیه بررسی می‌کند
+    }, 10000);
 
     return () => clearInterval(checkInstallStatus);
   }, []);

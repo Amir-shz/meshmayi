@@ -29,6 +29,7 @@ async function CarPage({ params }: { params: Promise<{ id: string }> }) {
       <Breadcrumbs name={name} />
       <div className=" col-span-5  flex flex-col gap-8">
         <CarPictures pictures={pictures} />
+        <span className=" w-full h-[0.0625rem] bg-neutral-400 -mt-4 -mb-4"></span>
         <CarColors colors={colors} />
         <CarPrice price={price} />
       </div>

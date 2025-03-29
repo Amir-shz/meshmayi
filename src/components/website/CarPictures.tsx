@@ -24,7 +24,7 @@ function CarPictures({
           allowTouchMove={false}
           thumbs={{ swiper: thumbsSwiper }}
           modules={[Thumbs]}
-          className=" rounded-xl mb-2 h-72 col-span-full"
+          className=" aspect-[2/1] rounded-xl mb-2 col-span-full"
         >
           {pictures.length === 0 && (
             <SwiperSlide className=" size-full bg-primary-50">
@@ -55,12 +55,12 @@ function CarPictures({
             slidesPerView={4}
             spaceBetween={32}
             modules={[Thumbs]}
-            className="h-12 col-span-4 w-full"
+            className="col-span-4 w-full"
           >
             {pictures.slice(0, 4).map((picture, index) => (
               <SwiperSlide
                 key={picture._id}
-                className=" h-full rounded overflow-hidden "
+                className=" aspect-[2/1] h-full rounded overflow-hidden "
               >
                 <Image
                   width={1280}

@@ -51,7 +51,7 @@ function PicturesModal({
                   thumbs={{ swiper: thumbsSwiper }}
                   modules={[Navigation, Thumbs]}
                   dir="ltr"
-                  className="relative w-full h-[20rem] rounded-lg"
+                  className="relative w-full aspect-[2/1] rounded-lg"
                 >
                   {pictures.map((picture, index) => (
                     <SwiperSlide key={picture._id} className=" h-full">
@@ -89,13 +89,13 @@ function PicturesModal({
                   className=" mt-3 cursor-pointer hide-scrollbar"
                 >
                   {pictures.map((picture, index) => (
-                    <SwiperSlide key={picture._id}>
+                    <SwiperSlide key={picture._id} className=" aspect-[2/1]">
                       <Image
                         width={640}
                         height={640}
                         src={picture.src}
                         alt={`Thumbnail ${index + 1}`}
-                        className="h-12 w-28 rounded-lg object-cover border-2 border-transparent"
+                        className=" h-full w-28 rounded-lg object-cover border-2 border-transparent"
                       />
                     </SwiperSlide>
                   ))}
