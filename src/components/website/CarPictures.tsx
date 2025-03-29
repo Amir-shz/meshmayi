@@ -46,7 +46,7 @@ function CarPictures({
           ))}
         </Swiper>
         <div
-          className={`grid grid-cols-5 gap-8 ${
+          className={` max-sm:hidden grid grid-cols-5 gap-8 ${
             pictures.length === 0 && "hidden"
           }`}
         >
