@@ -56,7 +56,9 @@ async function CarPage({ params }: { params: Promise<{ id: string }> }) {
         <BuyingAdvice />
         <Companion />
       </div>
-      <CarPrice price={price} />
+      <div className=" sm:hidden">
+        <CarPrice price={price} />
+      </div>
     </>
   );
 }
