@@ -44,10 +44,10 @@ function BuyingAdvice() {
         </li>
       </ul>
       <div className=" flex items-center gap-4 justify-center max-sm:justify-between max-sm:px-3 [&_svg]:size-10 [&_svg]:text-neutral-500 [&_svg]:m-1 max-sm:[&_svg]:size-8">
-        <Link href={`${PHONE_NUMBER}`} target="_blank">
+        <Link href={`tel:${PHONE_NUMBER}`} target="_blank">
           <HiOutlinePhone />
         </Link>
-        <Link href={`${EMAIL}`} target="_blank">
+        <Link href={`mailto:${EMAIL}`} target="_blank">
           <HiOutlineMail />
         </Link>
         <Link href={`${WHATSAPP_LINK}`} target="_blank">
