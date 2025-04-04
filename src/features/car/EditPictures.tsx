@@ -40,7 +40,7 @@ function EditPictures({
 
   return (
     <>
-      <div className=" rounded-xl overflow-hidden h-64 mt-4">
+      <div className=" rounded-xl overflow-hidden mt-4 aspect-[2/1]">
         <Slider pictures={picturesInput} />
       </div>
       <div className=" w-full flex justify-between gap-4 mt-6">

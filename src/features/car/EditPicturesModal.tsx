@@ -95,7 +95,7 @@ function EditPicturesModal({
               </Button> */}
             </div>
             <div className=" mt-0 w-full grid grid-cols-10 gap-6 py-10 pl-6 pr-10">
-              <div className=" col-span-6 rounded-xl overflow-hidden h-[15.1875rem] ">
+              <div className=" col-span-6 rounded-xl overflow-hidden  aspect-[2/1] ">
                 <Slider
                   pictures={pictures}
                   onChangeSlide={(num: number) => setActiveIndex(num)}
