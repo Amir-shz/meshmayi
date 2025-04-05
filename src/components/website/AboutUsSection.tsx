@@ -15,13 +15,13 @@ function AboutUsSection() {
         <HistoryInAbout />
         <LocationInAbout />
       </div>
-      <div className="mt-10 h-[32rem] max-sm:h-28">
+      <div className="mt-10">
         <Image
           src={aboutPhoto}
           alt="zarsazan"
           placeholder="blur"
           blurDataURL="about us section"
-          className=" w-full h-full object-contain"
+          className=" w-full object-contain"
         />
       </div>
     </section>
