@@ -27,11 +27,11 @@ function HistoryInAbout() {
           سابقه
         </p>
       </div>
-      <div className=" text-neutral-500 font-medium text-lg max-sm:text-[0.87813rem] leading-[2.125rem] max-sm:leading-[130%] space-y-2">
+      <div className=" text-neutral-500 font-medium text-lg max-sm:text-[0.87813rem] leading-[2.125rem] max-sm:leading-[130%] space-y-2 text-justify">
         <p>
           گروه تجاری زرسازان از سال ۱۴۰۰ با شناسایی و نیاز سنجی بازار خودرو در
           کشور عزیزمان ایران، اقدام به فعالیت تخصصی در زمینه واردات خودروی خارجی
-          نموده و هم اکنون شرکت زرسازان بهرو در زمينه واردات خودروی جانبازان
+          نموده و هم اکنون هلدینگ زرسازان بهرو در زمينه واردات خودروی جانبازان
           مصوبه هیئت وزیران مشغول به فعالیت است.
         </p>
       </div>

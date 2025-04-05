@@ -34,8 +34,8 @@ function LocationInAbout() {
             </p>
           </div>
           <p>
-            منطقه آزاد ماکو، شهر بازرگان، خیابان امام، پلاک ۱۰۹۶، طبقه اول، شرکت
-            زرسازان بهرو
+            منطقه آزاد ماکو، شهر بازرگان، خیابان امام، پلاک ۱۰۹۶، طبقه اول،
+            هلدینگ زرسازان بهرو
           </p>
         </div>
         <div className=" basis-1/2 h-full rounded-lg overflow-hidden border border-neutral-300 max-sm:w-full max-sm:basis-auto max-sm:h-24">
