@@ -15,7 +15,7 @@ function AboutUsSection() {
         <HistoryInAbout />
         <LocationInAbout />
       </div>
-      <div className="mt-10 max-sm:h-28">
+      <div className="mt-10 h-[32rem] max-sm:h-28">
         <Image
           src={aboutPhoto}
           alt="zarsazan"
