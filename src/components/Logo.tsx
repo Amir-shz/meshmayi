@@ -7,7 +7,7 @@ function Logo() {
       src={logo}
       width={1000}
       height={1000}
-      className=" size-14"
+      className=" size-14 max-sm:size-10"
       alt="zarsazan behro"
     />
   );

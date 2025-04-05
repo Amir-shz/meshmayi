@@ -1,7 +1,10 @@
+import Image from "next/image";
 import AboutCompany from "./AboutCompany";
 import HistoryInAbout from "./HistoryInAbout";
 import LocationInAbout from "./LocationInAbout";
 import SectionsHeader from "./SectionsHeader";
+
+import aboutPhoto from "@/../public/aboutUs.svg";
 
 function AboutUsSection() {
   return (
@@ -12,7 +15,13 @@ function AboutUsSection() {
         <HistoryInAbout />
         <LocationInAbout />
       </div>
-      <div className=" h-[32.75rem] bg-primary-50 mt-10 max-sm:h-28"></div>
+      <div className=" h-[32.75rem] bg-primary-50 mt-10 max-sm:h-28">
+        <Image
+          src={aboutPhoto}
+          alt="zarsazan"
+          className=" w-full h-full object-contain"
+        />
+      </div>
     </section>
   );
 }

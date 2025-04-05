@@ -52,7 +52,7 @@ async function CarPage({ params }: { params: Promise<{ id: string }> }) {
       </div>
       <span className=" col-span-5 w-full h-[0.0625rem] bg-neutral-200 mt-5 mb-5  sm:hidden"></span>
 
-      <div className=" col-span-2 flex flex-col gap-8 max-sm:gap-3 max-sm:col-span-5">
+      <div className=" col-span-2 flex flex-col gap-8 max-sm:gap-3 max-sm:col-span-5 max-sm:mb-16">
         <BuyingAdvice />
         <Companion />
       </div>
