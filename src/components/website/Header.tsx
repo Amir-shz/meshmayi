@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import Logo from "../Logo";
+// import Logo from "../Logo";
 import CallIconButton from "./CallIconButton";
 import HeaderNav from "./HeaderNav";
 import HeaderBtn from "./HeaderBtn";
 import { usePathname } from "next/navigation";
+import LogoName from "./LogoName";
 
 function Header() {
   const pathName = usePathname();
@@ -21,12 +22,13 @@ function Header() {
         >
           <Link
             href="/"
-            className=" flex items-center gap-2 max-sm:translate-x-4"
+            className=" flex items-center gap-2 max-sm:translate-x-6"
           >
-            <Logo />
+            <LogoName />
+            {/* <Logo />
             <h2 className=" text-h5_B_desktop max-sm:text-h5_SB_mobile text-primary-500">
               زرسازان بهرو
-            </h2>
+            </h2> */}
           </Link>
         </div>
         <HeaderNav />

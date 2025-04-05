@@ -20,6 +20,7 @@ function AboutUsSection() {
           src={aboutPhoto}
           alt="zarsazan"
           placeholder="blur"
+          blurDataURL="about us section"
           className=" w-full h-full object-contain"
         />
       </div>

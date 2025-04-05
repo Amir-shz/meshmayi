@@ -10,6 +10,7 @@ function HeroSection() {
         src={hero}
         alt="zarsazan"
         placeholder="blur"
+        blurDataURL="hero section"
         className=" w-full h-full object-contain"
       />
     </section>
