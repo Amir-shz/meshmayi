@@ -15,10 +15,11 @@ function AboutUsSection() {
         <HistoryInAbout />
         <LocationInAbout />
       </div>
-      <div className=" h-[32.75rem] bg-primary-50 mt-10 max-sm:h-28">
+      <div className="mt-10 max-sm:h-28">
         <Image
           src={aboutPhoto}
           alt="zarsazan"
+          loading="lazy"
           className=" w-full h-full object-contain"
         />
       </div>
