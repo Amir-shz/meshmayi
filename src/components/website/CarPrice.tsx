@@ -11,7 +11,7 @@ function CarPrice({ price }: { price: string }) {
           {digitsEnToFa(addCommas(price))}
         </span>
         <span className=" text-p2_M_desktop text-primary-300 max-sm:text-lb2_mobile">
-          تومان
+          یورو
         </span>
       </p>
     </div>

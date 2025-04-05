@@ -14,7 +14,7 @@ function EditPrice({ price }: { price: number }) {
   return (
     <TextField
       size="big"
-      label="قیمت(تومان)"
+      label="قیمت(یورو)"
       name="price"
       id="price"
       value={priceInput.toString()}

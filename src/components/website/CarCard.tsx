@@ -56,7 +56,7 @@ function CarCard({ car }: { car: carTypes }) {
                 {digitsEnToFa(addCommas(car.price))}
               </span>
               <span className=" text-neutral-500 text-p4_M_desktop max-sm:text-p4_SB_desktop">
-                تومان
+                یورو
               </span>
             </p>
             <Link href={`/products/${car._id}`} className=" max-sm:hidden">

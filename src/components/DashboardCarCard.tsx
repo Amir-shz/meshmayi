@@ -30,7 +30,7 @@ function DashboardCarCard({
           </p>
           <p className=" text-p2_M_desktop text-neutral-800 mt-3">
             {digitsEnToFa(addCommas(price))}{" "}
-            <span className=" text-p4_M_desktop text-neutral-400">تومان</span>
+            <span className=" text-p4_M_desktop text-neutral-400">یورو</span>
           </p>
         </div>
         <DashboardCarCardBtns id={id} />
