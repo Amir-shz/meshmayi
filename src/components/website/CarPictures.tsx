@@ -40,6 +40,7 @@ function CarPictures({
                 height={1280}
                 src={picture.src}
                 alt={`Car ${index + 1}`}
+                unoptimized
                 className=" h-full object-cover object-center w-full"
               />
             </SwiperSlide>
@@ -67,6 +68,7 @@ function CarPictures({
                   height={1280}
                   src={picture.src}
                   alt={`Car ${index + 1}`}
+                  unoptimized
                   className=" h-full object-cover object-center w-full cursor-pointer"
                 />
               </SwiperSlide>

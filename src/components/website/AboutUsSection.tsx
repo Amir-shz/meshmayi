@@ -19,7 +19,7 @@ function AboutUsSection() {
         <Image
           src={aboutPhoto}
           alt="zarsazan"
-          loading="lazy"
+          placeholder="blur"
           className=" w-full h-full object-contain"
         />
       </div>

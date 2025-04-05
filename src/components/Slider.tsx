@@ -52,6 +52,7 @@ function Slider({ pictures, onChangeSlide = () => {} }: sliderProps) {
               alt="car"
               width={250}
               height={250}
+              unoptimized
               className=" aspect-[2/1]  object-cover object-center w-full"
             />
           </SwiperSlide>

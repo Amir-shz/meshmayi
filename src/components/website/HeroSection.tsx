@@ -9,7 +9,7 @@ function HeroSection() {
       <Image
         src={hero}
         alt="zarsazan"
-        loading="lazy"
+        placeholder="blur"
         className=" w-full h-full object-contain"
       />
     </section>

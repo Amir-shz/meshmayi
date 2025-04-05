@@ -60,6 +60,7 @@ function PicturesModal({
                         height={1280}
                         src={picture.src}
                         alt={`Car ${index + 1}`}
+                        unoptimized
                         className=" h-full object-cover object-center w-full"
                       />
                     </SwiperSlide>
@@ -95,6 +96,7 @@ function PicturesModal({
                         height={640}
                         src={picture.src}
                         alt={`Thumbnail ${index + 1}`}
+                        unoptimized
                         className=" h-full w-28 rounded-lg object-cover border-2 border-transparent"
                       />
                     </SwiperSlide>
