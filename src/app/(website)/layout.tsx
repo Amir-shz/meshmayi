@@ -7,7 +7,7 @@ function layout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="bg-neutral-50">
+    <div id="top" className="website-shell bg-neutral-50">
       <div className="relative mx-12 max-sm:mx-4 max-lg:mx-8">
         <Header />
         {/* container */}

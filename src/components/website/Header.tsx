@@ -1,41 +1,46 @@
 "use client";
 
 import Link from "next/link";
-// import Logo from "../Logo";
-import CallIconButton from "./CallIconButton";
-import HeaderNav from "./HeaderNav";
-import HeaderBtn from "./HeaderBtn";
 import { usePathname } from "next/navigation";
+import { Phone } from "lucide-react";
+import { NAV_ITEMS, PHONE_NUMBER } from "@/utils/utils";
 import LogoName from "./LogoName";
+import MobileNavigation from "./MobileNavigation";
 
-function Header() {
-  const pathName = usePathname();
-
+export default function Header() {
+  const pathname = usePathname();
   return (
-    <header className=" fixed top-0 left-1/2 -translate-x-1/2 w-full grid grid-cols-12 gap-8 py-4 max-sm:py-3 bg-neutral-50 z-50 ">
-      <div className=" flex justify-between items-center col-span-full mx-12 max-sm:mx-4 max-lg:mx-8">
-        <HeaderBtn />
-        <div
-          className={` flex items-center gap-4 max-sm:gap-2 max-xl:gap-2 ${
-            pathName !== "/" && "max-sm:hidden"
-          }`}
+    <header className="site-header">
+      <div className="site-header-inner">
+        <Link
+          href="/#home"
+          aria-label="زرسازان بهرو، صفحه اصلی"
+          className="site-logo"
         >
-          <Link
-            href="/"
-            className=" flex items-center gap-2 max-sm:translate-x-6"
+          <LogoName />
+        </Link>
+        <nav className="site-desktop-nav" aria-label="منوی اصلی">
+          {NAV_ITEMS.map((item) => (
+            <Link
+              key={item.id}
+              href={pathname === "/" ? "#" + item.id : "/#" + item.id}
+            >
+              {item.title}
+            </Link>
+          ))}
+        </nav>
+        <div className="site-header-actions">
+          <a
+            className="header-contact"
+            href={"tel:" + PHONE_NUMBER}
+            aria-label="تماس با زرسازان بهرو"
           >
-            <LogoName />
-            {/* <Logo />
-            <h2 className=" text-h5_B_desktop max-sm:text-h5_SB_mobile text-primary-500">
-              زرسازان بهرو
-            </h2> */}
-          </Link>
+            <Phone size={17} />
+            <span>تماس با ما</span>
+          </a>
+          <MobileNavigation />
         </div>
-        <HeaderNav />
-        <CallIconButton size="lg" />
       </div>
     </header>
   );
 }
-
-export default Header;

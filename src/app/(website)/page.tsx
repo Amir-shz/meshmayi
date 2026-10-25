@@ -1,9 +1,10 @@
-import AboutUsSection from "@/components/website/AboutUsSection";
-import ContactUsSection from "@/components/website/ContactUsSection";
-import FaqSection from "@/components/website/FaqSection";
-import HeroSection from "@/components/website/HeroSection";
-import ProductSectionLoader from "@/components/website/ProductSectionLoader";
-import ProductsSection from "@/components/website/ProductsSection";
+import ConsultationBanner from "@/features/home/components/ConsultationBanner";
+import AboutUsSection from "@/features/home/components/AboutUsSection";
+import ContactUsSection from "@/features/home/components/ContactUsSection";
+import FaqSection from "@/features/home/components/FaqSection";
+import HeroSection from "@/features/home/components/HeroSection";
+import HomeProductsLoading from "@/features/home/components/HomeProductsLoading";
+import ProductsSection from "@/features/home/components/ProductsSection";
 import { Metadata } from "next";
 import { Suspense } from "react";
 
@@ -15,14 +16,15 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <div className=" col-span-full flex flex-col gap-10">
+    <div className="home-page col-span-full">
       <HeroSection />
 
-      <Suspense fallback={<ProductSectionLoader />}>
+      <Suspense fallback={<HomeProductsLoading />}>
         <ProductsSection />
       </Suspense>
 
       <AboutUsSection />
+      <ConsultationBanner />
       <ContactUsSection />
       <FaqSection />
     </div>

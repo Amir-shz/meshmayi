@@ -1,31 +1,52 @@
-"use client";
+import Link from "next/link";
+import { ArrowUpLeft, MapPin } from "lucide-react";
+import { NAV_ITEMS, EMAIL, PHONE_NUMBER } from "@/utils/utils";
+import LogoName from "./LogoName";
+import SocialLinks from "./SocialLinks";
 
-import { usePathname } from "next/navigation";
-import FooterBottomSection from "./FooterBottomSection";
-import FooterNav from "./FooterNav";
-import FooterTopSection from "./FooterTopSection";
-
-function Footer() {
-  const pathName = usePathname();
-
-  const isProductPage = /^\/products\/[a-f\d]{24}$/.test(pathName)
-    ? true
-    : false;
-
+export default function Footer() {
   return (
-    <footer
-      className={` ${
-        isProductPage && "max-sm:hidden"
-      } col-span-full mt-40 max-sm:mt-14`}
-    >
-      <FooterNav />
-      <FooterTopSection />
-      <div className=" bg-primary-200 h-[0.125rem] mb-2 -mx-6 max-sm:-mx-2 ">
-        {" "}
+    <footer className="design-footer col-span-full">
+      <div className="footer-main">
+        <div className="footer-brand">
+          <Link href="/" aria-label="صفحه اصلی زرسازان بهرو">
+            <LogoName />
+          </Link>
+          <p>
+            مسیر تازه، انتخاب متمایز.
+            <br />
+            همراه شما در دنیای خودروهای وارداتی.
+          </p>
+          <SocialLinks />
+        </div>
+        <nav aria-label="دسترسی سریع">
+          <h2>دسترسی سریع</h2>
+          {NAV_ITEMS.filter((item) => item.id !== "home").map((item) => (
+            <Link key={item.id} href={"/#" + item.id}>
+              {item.title}
+            </Link>
+          ))}
+          <Link href="/products">همه خودروها</Link>
+        </nav>
+        <div className="footer-address">
+          <h2>نشانی ما</h2>
+          <p>
+            <MapPin size={20} /> منطقه آزاد ماکو، شهر بازرگان، خیابان امام، پلاک
+            ۱۰۹۶، طبقه اول، هلدینگ زرسازان بهرو
+          </p>
+          <a href={"tel:" + PHONE_NUMBER} dir="ltr">
+            ۰۹۹۰۱۰۹۴۹۳۳
+          </a>
+          <a href={"mailto:" + EMAIL}>{EMAIL}</a>
+        </div>
       </div>
-      <FooterBottomSection />
+      <div className="footer-bottom">
+        <p>© تمامی حقوق متعلق به گروه زرسازان است.</p>
+        <a href="#top">
+          بازگشت به بالا <ArrowUpLeft size={17} />
+        </a>
+        <span dir="ltr">ZARSAZAN BEHRO</span>
+      </div>
     </footer>
   );
 }
-
-export default Footer;
