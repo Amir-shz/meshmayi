@@ -11,8 +11,8 @@ export default function HomeProductsLoading() {
           <h2>خودروی بعدی شما</h2>
         </div>
       </div>
-      <div className="home-cars-grid" aria-hidden="true">
-        {[0, 1, 2].map((index) => (
+      <div className="vehicle-grid" aria-hidden="true">
+        {[0, 1, 2, 3].map((index) => (
           <div
             key={index}
             className="h-80 rounded-xl bg-neutral-200 motion-safe:animate-pulse"

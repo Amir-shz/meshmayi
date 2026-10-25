@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, CarFront } from "lucide-react";
 import { getHomeCars } from "@/services/apiCars";
-import HomeCarCard from "./HomeCarCard";
+import CarCard from "@/components/website/CarCard";
 
 export default async function ProductsSection() {
   let cars: Awaited<ReturnType<typeof getHomeCars>> = [];
@@ -24,9 +24,9 @@ export default async function ProductsSection() {
         </Link>
       </div>
       {cars.length ? (
-        <div className="home-cars-grid">
+        <div className="vehicle-grid">
           {cars.map((car) => (
-            <HomeCarCard key={car._id} car={car} />
+            <CarCard key={car._id} car={car} />
           ))}
         </div>
       ) : (

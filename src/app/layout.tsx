@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "@/styles/globals.css";
 import PWAInstallPrompt from "@/components/website/PWAInstallPrompt";
 import { Toaster } from "@/components/ui/toaster";
+import Script from "next/script";
 
 const IranSans = localFont({
   src: [
@@ -66,10 +67,17 @@ export default function RootLayout({
 }>) {
   return (
     <html
+      suppressHydrationWarning
       lang="fa"
       dir="rtl"
       className="max-2xl:text-[93.75%] lg:text-[87.5%] xl:text-[93.75%] 3xl:text-[112.5%]"
     >
+      <head>
+        <Script
+          id="startup-session"
+          strategy="beforeInteractive"
+        >{`try { if (new URLSearchParams(location.search).get('intro') !== 'preview' && sessionStorage.getItem('zarsazan-startup-seen')) document.documentElement.setAttribute('data-startup-seen', 'true'); } catch {}`}</Script>
+      </head>
       <body
         className={`${IranSans.className} ${IranSans.variable} antialiased scroll-smooth bg-neutral-50`}
       >

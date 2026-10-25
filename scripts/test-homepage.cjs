@@ -47,7 +47,7 @@ async function run() {
             return scenario === "populated" ? [car] : [];
           },
         },
-        "./HomeCarCard": ({ car }) =>
+        "@/components/website/CarCard": ({ car }) =>
           React.createElement("a", { href: "/products/" + car._id }, car.name),
       },
     );
@@ -68,9 +68,9 @@ async function run() {
       assert.ok(html.includes('href="#contact-us"'));
     }
   }
-  const Card = loadComponent("src/features/home/components/HomeCarCard.tsx", {
+  const Card = loadComponent("src/components/website/CarCard.tsx", {
     "next/link": Link,
-    "next/image": () => null,
+    "./CarCardGallery": () => null,
   });
   const html = renderToStaticMarkup(React.createElement(Card, { car }));
   assert.ok(html.includes("تماس برای قیمت"));
@@ -81,6 +81,16 @@ async function run() {
   );
   assert.ok(pricedCard.includes("یورو"));
   assert.ok(!pricedCard.includes("تومان"));
+  const Gallery = loadComponent("src/components/website/CarCardGallery.tsx", {
+    "next/link": Link,
+    "next/image": ({ alt, src }) => React.createElement("img", { alt, src }),
+  });
+  for (const count of [0, 1, 3]) {
+    const pictures = Array.from({ length: count }, (_, i) => ({ _id: String(i), src: "/demo-" + i + ".jpg" }));
+    const gallery = renderToStaticMarkup(React.createElement(Gallery, { car: { ...car, pictures } }));
+    assert.equal((gallery.match(/<button/g) || []).length, count > 1 ? 2 : 0);
+    assert.ok(!/<a[^>]*>(?:(?!<\/a>).)*<button/s.test(gallery), "Gallery controls must not be nested in navigation links");
+  }
   console.log(
     "Homepage: populated, empty, failed and missing-photo/price scenarios passed. No database writes.",
   );

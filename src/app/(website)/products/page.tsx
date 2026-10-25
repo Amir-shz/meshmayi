@@ -1,30 +1,33 @@
 import CarCard from "@/components/website/CarCard";
-import LinkedCarCard from "@/components/website/LinkedCarCard";
-import SectionsHeader from "@/components/website/SectionsHeader";
-import { carTypes } from "@/types/types";
+import { getCars } from "@/services/apiCars";
 
 export const revalidate = 0;
 
 export default async function ProductsPage() {
-  const cars = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/car`)
-    .then((res) => res.json())
-    .then((data) => data.data);
-
+  const cars = await getCars();
   return (
-    <>
-      <div className=" col-span-full">
-        <SectionsHeader title="محصولات" />
+    <section
+      className="vehicle-catalog col-span-full"
+      aria-labelledby="catalog-title"
+    >
+      <div className="home-section-heading">
+        <div>
+          <p className="eyebrow">برای مسیر پیش روی شما</p>
+          <h1 id="catalog-title">خودروهای زرسازان بهرو</h1>
+        </div>
+        <span className="section-note">انتخابی متناسب با سبک زندگی شما</span>
       </div>
-      <div className=" max-sm:hidden col-span-full grid grid-cols-3 max-[850px]:grid-cols-2 gap-8 max-lg:gap-4 max-sm:grid-cols-1 max-sm:gap-3 ">
-        {cars.map((car: carTypes) => (
-          <CarCard key={car._id} car={car} />
-        ))}
-      </div>
-      <div className=" sm:hidden col-span-full grid grid-cols-3 gap-8 max-sm:grid-cols-1 max-sm:gap-3 -mb-10">
-        {cars.map((car: carTypes) => (
-          <LinkedCarCard key={car._id} car={car} />
-        ))}
-      </div>
-    </>
+      {cars.length ? (
+        <div className="vehicle-grid">
+          {cars.map((car) => (
+            <CarCard key={car._id} car={car} />
+          ))}
+        </div>
+      ) : (
+        <p className="home-products-empty">
+          هنوز خودرویی برای نمایش ثبت نشده است.
+        </p>
+      )}
+    </section>
   );
 }

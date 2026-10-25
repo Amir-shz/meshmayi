@@ -26,7 +26,14 @@ const samples = [
     "gray",
     "شاسی‌بلند",
   ],
-  ["خودروی اسپرت", 2023, 45000, "/images/demo/sports-car.jpg", "black", "اسپرت"],
+  [
+    "خودروی اسپرت",
+    2023,
+    45000,
+    "/images/demo/sports-car.jpg",
+    "black",
+    "اسپرت",
+  ],
   ["بی‌ام‌و آبی", 2024, 29000, "/images/demo/bmw-blue.jpg", "blue", "سدان"],
   [
     "مرسدس بنز شهری",
@@ -38,6 +45,17 @@ const samples = [
   ],
   ["آئودی خانوادگی", 2025, 33000, "/images/demo/audi.jpg", "white", "خانوادگی"],
 ];
+
+const galleries = {
+  0: ["/images/consultation-mercedes.jpg"],
+  1: [
+    "/images/demo/bmw-side.jpg",
+    "/images/demo/bmw-rear.jpg",
+    "/images/demo/bmw-detail.jpg",
+    "/images/demo/bmw-street.jpg",
+  ],
+  2: ["/images/demo/audi-second.jpg"],
+};
 
 try {
   await mongoose.connect(uri, { serverSelectionTimeoutMS: 5000 });
@@ -54,7 +72,7 @@ try {
       price,
       labels: ["نمونه آزمایشی", category],
       colors: [color, color === "white" ? "black" : "white"],
-      pictures: [{ src: picture }],
+      pictures: [picture, ...(galleries[index] ?? [])].map((src) => ({ src })),
       descriptions: [
         "این خودرو صرفاً دادهٔ آزمایشی برای بررسی طراحی سایت است و موجودی واقعی نیست.",
         "قیمت، سال مدل، امکانات و مشخصات این نمونه فرضی هستند و پیشنهاد فروش محسوب نمی‌شوند.",
@@ -82,6 +100,19 @@ try {
       { $setOnInsert: sample },
       { upsert: true, runValidators: true },
     );
+    if (process.argv.includes("--galleries") && galleries[index]) {
+      await Car.updateOne(
+        { _id, labels: "نمونه آزمایشی" },
+        {
+          $set: { pictures: sample.pictures },
+          $addToSet: {
+            descriptions:
+              "تصاویر گالری صرفاً برای آزمایش نمایش چندتصویری هستند و الزاماً مربوط به یک خودروی مشخص نیستند.",
+          },
+        },
+        { runValidators: true },
+      );
+    }
   }
   const count = await Car.countDocuments({
     _id: {
