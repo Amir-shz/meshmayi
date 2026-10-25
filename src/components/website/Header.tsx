@@ -6,9 +6,11 @@ import { Phone } from "lucide-react";
 import { NAV_ITEMS, PHONE_NUMBER } from "@/utils/utils";
 import LogoName from "./LogoName";
 import MobileNavigation from "./MobileNavigation";
+import useActiveSection from "@/hooks/useActiveSection";
 
 export default function Header() {
   const pathname = usePathname();
+  const activeSection = useActiveSection(pathname);
   return (
     <header className="site-header">
       <div className="site-header-inner">
@@ -24,6 +26,7 @@ export default function Header() {
             <Link
               key={item.id}
               href={pathname === "/" ? "#" + item.id : "/#" + item.id}
+              aria-current={activeSection === item.id ? "location" : undefined}
             >
               {item.title}
             </Link>
@@ -38,7 +41,7 @@ export default function Header() {
             <Phone size={17} />
             <span>تماس با ما</span>
           </a>
-          <MobileNavigation />
+          <MobileNavigation activeSection={activeSection} />
         </div>
       </div>
     </header>

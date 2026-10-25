@@ -76,6 +76,11 @@ async function run() {
   assert.ok(html.includes("تماس برای قیمت"));
   assert.ok(html.includes("/products/" + car._id));
   assert.ok(html.includes(car.name));
+  const pricedCard = renderToStaticMarkup(
+    React.createElement(Card, { car: { ...car, price: 25000 } }),
+  );
+  assert.ok(pricedCard.includes("یورو"));
+  assert.ok(!pricedCard.includes("تومان"));
   console.log(
     "Homepage: populated, empty, failed and missing-photo/price scenarios passed. No database writes.",
   );

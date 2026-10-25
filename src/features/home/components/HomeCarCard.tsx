@@ -31,7 +31,7 @@ export default function HomeCarCard({ car }: { car: carTypes }) {
           <span>
             {car.price > 0 ? (
               <>
-                {digitsEnToFa(addCommas(car.price))} <small>تومان</small>
+                {digitsEnToFa(addCommas(car.price))} <small>یورو</small>
               </>
             ) : (
               "تماس برای قیمت"
