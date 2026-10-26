@@ -31,6 +31,7 @@ export default function Header() {
               {item.title}
             </Link>
           ))}
+          <Link href="/blog" aria-current={pathname.startsWith("/blog") ? "page" : undefined}>مجله زرسازان</Link>
         </nav>
         <div className="site-header-actions">
           <a

@@ -37,7 +37,7 @@ export default function StartupLoader() {
     const minimum = window.matchMedia("(prefers-reduced-motion: reduce)")
       .matches
       ? 350
-      : 1800;
+      : 3500;
     const ready = () => {
       readyTimer = setTimeout(
         dismiss,
@@ -46,7 +46,7 @@ export default function StartupLoader() {
     };
     if (document.readyState === "complete") ready();
     else window.addEventListener("load", ready, { once: true });
-    const deadline = setTimeout(dismiss, 2800);
+    const deadline = setTimeout(dismiss, 4500);
     return () => {
       clearTimeout(readyTimer);
       clearTimeout(deadline);
@@ -75,36 +75,45 @@ export default function StartupLoader() {
     <div className="startup-loader" data-phase={phase}>
       <div className="startup-loader-top">
         <span dir="ltr">ZARSAZAN BEHRO</span>
-        <span>آغاز یک همراهی</span>
+        <span className="startup-loader-welcome">آغاز یک همراهی</span>
       </div>
+      <div className="startup-loader-horizon" aria-hidden="true" />
       <div className="startup-loader-orbit" aria-hidden="true" />
       <div className="startup-loader-center">
-        <Image
-          src="/logo.png"
-          width={84}
-          height={84}
-          alt="زرسازان بهرو"
-          className="startup-loader-logo"
-        />
+        <div className="startup-loader-emblem">
+          <Image
+            src="/logo.png"
+            width={84}
+            height={84}
+            alt="زرسازان بهرو"
+            className="startup-loader-logo"
+          />
+        </div>
         <p className="startup-loader-kicker">دنیای خودروهای وارداتی</p>
         <div className="startup-loader-words" aria-hidden="true">
           <span>یک مسیر تازه.</span>
           <span>یک انتخاب متمایز.</span>
           <span>با شما، در هر مسیر.</span>
         </div>
+        <p className="startup-loader-description">
+          از یک انتخاب متمایز، تا تجربه‌ای فراتر از انتظار
+        </p>
         <p className="sr-only" role="status">
           در حال آماده‌سازی زرسازان بهرو
         </p>
         <div className="startup-loader-road" aria-hidden="true">
-          <svg viewBox="0 0 280 70" fill="none">
+          <svg viewBox="0 0 280 70" fill="none" focusable="false">
             <path d="M18 49h244M46 44l15-22c3-4 8-6 13-6h87c10 0 18 5 25 13l24 7c9 2 14 6 14 13M71 22h82l20 15H57m22 17a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm105 0a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z" />
           </svg>
           <span />
         </div>
       </div>
       <div className="startup-loader-bottom">
-        <p>مسیر تازه، انتخاب متمایز.</p>
-        <button onClick={dismiss}>
+        <p>
+          <span aria-hidden="true" />
+          مسیر تازه، انتخاب متمایز.
+        </p>
+        <button type="button" onClick={dismiss}>
           ورود به سایت <ArrowLeft size={17} />
         </button>
       </div>

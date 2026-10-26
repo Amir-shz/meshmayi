@@ -54,6 +54,7 @@ export default function MobileNavigation({
               {item.title}
             </Link>
           ))}
+          <Link href="/blog" onClick={() => setOpen(false)}>مجله زرسازان</Link>
         </nav>
       </DrawerContent>
     </Drawer>

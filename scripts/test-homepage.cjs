@@ -84,6 +84,12 @@ async function run() {
   const Gallery = loadComponent("src/components/website/CarCardGallery.tsx", {
     "next/link": Link,
     "next/image": ({ alt, src }) => React.createElement("img", { alt, src }),
+    "swiper/css": {},
+    "swiper/modules": { A11y: {} },
+    "swiper/react": {
+      Swiper: ({ children }) => React.createElement("div", null, children),
+      SwiperSlide: ({ children }) => React.createElement("div", null, children),
+    },
   });
   for (const count of [0, 1, 3]) {
     const pictures = Array.from({ length: count }, (_, i) => ({ _id: String(i), src: "/demo-" + i + ".jpg" }));

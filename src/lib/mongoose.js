@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const DB = process.env.DATABASE.replace(
+const DB = process.env.DATABASE?.replace(
   "<PASSWORD>",
   process.env.DATABASE_PASSWORD
 );
@@ -12,6 +12,7 @@ if (!cached) {
 }
 
 export default async function dbConnect() {
+  if (!DB) throw new Error("DATABASE is not configured.");
   if (cached.conn) {
     return cached.conn;
   }
@@ -23,9 +24,17 @@ export default async function dbConnect() {
 
     cached.promise = mongoose
       .connect(DB, options)
-      .then(() => console.log("DB connected"));
+      .then((connection) => {
+        console.log("DB connected");
+        return connection;
+      });
   }
 
-  cached.conn = await cached.promise;
+  try {
+    cached.conn = await cached.promise;
+  } catch (error) {
+    cached.promise = null;
+    throw error;
+  }
   return cached.conn;
 }

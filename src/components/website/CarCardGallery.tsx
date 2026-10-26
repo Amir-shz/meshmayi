@@ -1,5 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { A11y } from "swiper/modules";
+import type { Swiper as SwiperInstance } from "swiper";
+import "swiper/css";
 import Image from "next/image";
 import Link from "next/link";
 import { CarFront, ChevronLeft, ChevronRight, Images } from "lucide-react";
@@ -8,6 +12,7 @@ import { carTypes } from "@/types/types";
 
 export default function CarCardGallery({ car }: { car: carTypes }) {
   const [index, setIndex] = useState(0);
+  const slider = useRef<SwiperInstance | null>(null);
   const count = car.pictures.length;
   const current = Math.min(index, Math.max(0, count - 1));
   return (
@@ -16,23 +21,32 @@ export default function CarCardGallery({ car }: { car: carTypes }) {
       role="group"
       aria-label={"تصاویر " + car.name}
     >
-      <Link
+      {count ? <Swiper
+        modules={[A11y]}
+        a11y={{ containerMessage: "تصاویر " + car.name }}
+        dir="rtl"
+        slidesPerView={1}
+        rewind
+        grabCursor={count > 1}
+        watchOverflow
+        preventClicks
+        preventClicksPropagation
+        onSwiper={(swiper) => { slider.current = swiper; }}
+        onSlideChange={(swiper) => setIndex(swiper.activeIndex)}
+        className="vehicle-swiper"
+      >{car.pictures.map((picture, i) => <SwiperSlide key={picture._id || i}>
+        <Link href={"/products/" + car._id} className="vehicle-image-link" aria-label={"مشاهده " + car.name} draggable={false}>
+          <Image src={picture.src} alt={car.name + "، تصویر " + digitsEnToFa(String(i + 1))} fill
+            sizes="(max-width: 599px) 100vw, (max-width: 899px) 50vw, (max-width: 1199px) 33vw, 25vw"
+            className="vehicle-image" draggable={false} />
+        </Link>
+      </SwiperSlide>)}</Swiper> : <Link
         href={"/products/" + car._id}
         className="vehicle-image-link"
         aria-label={"مشاهده " + car.name}
       >
-        {count ? (
-          <Image
-            src={car.pictures[current].src}
-            alt={car.name + "، تصویر " + digitsEnToFa(String(current + 1))}
-            fill
-            sizes="(max-width: 599px) 100vw, (max-width: 899px) 50vw, (max-width: 1199px) 33vw, 25vw"
-            className="vehicle-image"
-          />
-        ) : (
           <CarFront size={48} strokeWidth={1.2} aria-hidden="true" />
-        )}
-      </Link>
+      </Link>}
       {car.labels[0] && <span className="vehicle-badge">{car.labels[0]}</span>}
       {count > 1 && (
         <>
@@ -43,14 +57,14 @@ export default function CarCardGallery({ car }: { car: carTypes }) {
           <button
             className="vehicle-gallery-button vehicle-gallery-previous"
             aria-label={"تصویر قبلی " + car.name}
-            onClick={() => setIndex((current - 1 + count) % count)}
+            onClick={() => slider.current?.slidePrev()}
           >
             <ChevronRight size={19} />
           </button>
           <button
             className="vehicle-gallery-button vehicle-gallery-next"
             aria-label={"تصویر بعدی " + car.name}
-            onClick={() => setIndex((current + 1) % count)}
+            onClick={() => slider.current?.slideNext()}
           >
             <ChevronLeft size={19} />
           </button>

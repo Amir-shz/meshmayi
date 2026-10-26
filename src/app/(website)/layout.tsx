@@ -1,6 +1,7 @@
 import Footer from "@/components/website/Footer";
 import Header from "@/components/website/Header";
 import StartupLoader from "@/components/website/StartupLoader";
+import RouteScrollReset from "@/components/website/RouteScrollReset";
 
 function layout({
   children,
@@ -10,6 +11,7 @@ function layout({
   return (
     <>
       <StartupLoader />
+      <RouteScrollReset />
       <noscript>
         <style>{`.startup-loader { display: none !important; }`}</style>
       </noscript>

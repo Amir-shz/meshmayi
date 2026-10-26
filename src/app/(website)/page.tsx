@@ -7,6 +7,8 @@ import HomeProductsLoading from "@/features/home/components/HomeProductsLoading"
 import ProductsSection from "@/features/home/components/ProductsSection";
 import { Metadata } from "next";
 import { Suspense } from "react";
+import HomeBlogSection from "@/features/blog/components/HomeBlogSection";
+import HomeBlogLoading from "@/features/blog/components/HomeBlogLoading";
 
 export const revalidate = 0;
 
@@ -25,6 +27,7 @@ export default function HomePage() {
 
       <AboutUsSection />
       <ConsultationBanner />
+      <Suspense fallback={<HomeBlogLoading />}><HomeBlogSection /></Suspense>
       <ContactUsSection />
       <FaqSection />
     </div>

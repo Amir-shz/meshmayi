@@ -1,66 +1,44 @@
-import Slider from "@/components/Slider";
-import Breadcrumbs from "@/components/website/Breadcrumbs";
-import BuyingAdvice from "@/components/website/BuyingAdvice";
-import CarColors from "@/components/website/CarColors";
-import CarDescriptions from "@/components/website/CarDescriptions";
-import CarName from "@/components/website/CarName";
-import CarOptions from "@/components/website/CarOptions";
-import CarPictures from "@/components/website/CarPictures";
-import CarPrice from "@/components/website/CarPrice";
-import CarSpecifications from "@/components/website/CarSpecifications";
-import Companion from "@/components/website/Companion";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { ArrowLeft, ChevronLeft } from "lucide-react";
+import { digitsEnToFa } from "@persian-tools/persian-tools";
+import { getCar } from "@/services/apiCars";
+import ProductGallery from "@/features/product/components/ProductGallery";
+import ProductPurchase from "@/features/product/components/ProductPurchase";
+import ProductDetails from "@/features/product/components/ProductDetails";
+import "@/styles/product.css";
+import "@/styles/comments.css";
+import ProductComments from "@/features/comments/components/ProductComments";
+import { commentPage } from "@/lib/commentValidation";
 
-async function CarPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function CarPage({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ commentsPage?: string }> }) {
   const { id } = await params;
-  const {
-    name,
-    price,
-    model,
-    pictures,
-    options,
-    technicalSpecifications,
-    descriptions,
-    colors,
-  } = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/car/${id}`)
-    .then((res) => res.json())
-    .then((data) => data.data);
-
+  const car = await getCar(id);
+  if (!car) notFound();
+  const query = await searchParams;
   return (
-    <>
-      <Breadcrumbs name={name} />
-      <div className=" col-span-5 flex flex-col gap-8">
-        <div className=" max-sm:hidden">
-          <CarPictures pictures={pictures} />
+    <main className="product-page col-span-full">
+      <nav aria-label="مسیر صفحه" className="product-breadcrumb">
+        <Link href="/">خانه</Link><ChevronLeft aria-hidden="true" size={14} />
+        <Link href="/products">خودروها</Link><ChevronLeft aria-hidden="true" size={14} />
+        <span aria-current="page">{car.name}</span>
+      </nav>
+      <header className="product-heading">
+        <div>
+          <p className="product-eyebrow">انتخابی برای مسیر پیش رو</p>
+          <h1>{car.name}</h1>
+          <div className="product-meta"><span>مدل {digitsEnToFa(String(car.model))}</span>{car.labels.map((label, i) => <span key={i}>{label}</span>)}</div>
         </div>
-        <div className=" sm:hidden mb-3 overflow-hidden rounded-lg">
-          <Slider pictures={pictures} />
+        <Link href="/products" className="product-back">همه خودروها <ArrowLeft size={18} aria-hidden="true" /></Link>
+      </header>
+      <div className="product-layout">
+        <div className="product-content">
+          <ProductGallery pictures={car.pictures} name={car.name} />
+          <ProductDetails car={car} />
         </div>
-        <span className=" w-full h-[0.0625rem] bg-neutral-400 -mt-4 -mb-4 max-sm:hidden"></span>
-        <div className="flex flex-col gap-8 max-sm:hidden">
-          <CarColors colors={colors} />
-          <CarPrice price={price} />
-        </div>
+        <ProductPurchase price={car.price} colors={car.colors} />
       </div>
-      <div className=" col-span-5 flex flex-col gap-8 max-sm:gap-4">
-        <CarName name={name} model={model} />
-        <div className=" sm:hidden mt-1 mb-2">
-          <CarColors colors={colors} />
-        </div>
-        <CarSpecifications technicalSpecifications={technicalSpecifications} />
-        <CarOptions options={options} />
-        <CarDescriptions descriptions={descriptions} />
-      </div>
-      <span className=" col-span-5 w-full h-[0.0625rem] bg-neutral-200 mt-5 mb-5  sm:hidden"></span>
-
-      <div className=" col-span-2 flex flex-col gap-8 max-sm:gap-3 max-sm:col-span-5 max-sm:mb-16">
-        <BuyingAdvice />
-        <Companion />
-      </div>
-      <div className=" sm:hidden">
-        <CarPrice price={price} />
-      </div>
-    </>
+      <ProductComments carId={id} page={commentPage(query.commentsPage)} />
+    </main>
   );
 }
-
-export default CarPage;

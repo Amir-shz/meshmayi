@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "@/styles/globals.css";
+import "@/styles/skeleton.css";
 import PWAInstallPrompt from "@/components/website/PWAInstallPrompt";
 import { Toaster } from "@/components/ui/toaster";
 import Script from "next/script";
