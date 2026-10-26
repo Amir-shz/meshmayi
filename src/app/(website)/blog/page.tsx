@@ -7,6 +7,11 @@ import BlogCard from "@/features/blog/components/BlogCard";
 import BlogCategorySelect from "@/features/blog/components/BlogCategorySelect";
 import "@/styles/blog.css";
 
+// @next-codemod-ignore Cache Components adoption: this segment temporarily allows blocking.
+// Remove this opt-out after verifying the segment passes validation without it.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 export const dynamic = "force-dynamic";
 export const metadata = { title: "مجله زرسازان | راهنمای دنیای خودرو", description: "مقاله‌ها، تجربه‌ها و راهنمای انتخاب خودروهای وارداتی از زرسازان بهرو" };
 

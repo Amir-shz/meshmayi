@@ -5,6 +5,11 @@ import { commentPage, isCommentStatus } from "@/lib/commentValidation";
 import CommentModeration from "@/features/comments/components/CommentModeration";
 import "@/styles/comments.css";
 
+// @next-codemod-ignore Cache Components adoption: this segment temporarily allows blocking.
+// Remove this opt-out after verifying the segment passes validation without it.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 export const dynamic = "force-dynamic";
 
 export default async function CommentsPage({ searchParams }: { searchParams: Promise<{ status?: string; page?: string }> }) {
