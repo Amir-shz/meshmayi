@@ -14,6 +14,7 @@ export default function Header() {
   return (
     <header className="site-header">
       <div className="site-header-inner">
+        <MobileNavigation activeSection={activeSection} />
         <Link
           href="/#home"
           aria-label="زرسازان بهرو، صفحه اصلی"
@@ -39,10 +40,9 @@ export default function Header() {
             href={"tel:" + PHONE_NUMBER}
             aria-label="تماس با زرسازان بهرو"
           >
-            <Phone size={17} />
+            <Phone size={17} aria-hidden="true" />
             <span>تماس با ما</span>
           </a>
-          <MobileNavigation activeSection={activeSection} />
         </div>
       </div>
     </header>

@@ -26,8 +26,8 @@ export default function StartupLoader() {
       return;
     try {
       if (sessionStorage.getItem("zarsazan-startup-seen")) {
-        setPhase("hidden");
-        return;
+        const skipTimer = setTimeout(() => setPhase("hidden"), 0);
+        return () => clearTimeout(skipTimer);
       }
     } catch {
       /* Storage is optional. */
@@ -37,7 +37,7 @@ export default function StartupLoader() {
     const minimum = window.matchMedia("(prefers-reduced-motion: reduce)")
       .matches
       ? 350
-      : 3500;
+      : 3000;
     const ready = () => {
       readyTimer = setTimeout(
         dismiss,
@@ -46,7 +46,7 @@ export default function StartupLoader() {
     };
     if (document.readyState === "complete") ready();
     else window.addEventListener("load", ready, { once: true });
-    const deadline = setTimeout(dismiss, 4500);
+    const deadline = setTimeout(dismiss, 4000);
     return () => {
       clearTimeout(readyTimer);
       clearTimeout(deadline);
@@ -72,7 +72,7 @@ export default function StartupLoader() {
   }, [phase]);
   if (phase === "hidden") return null;
   return (
-    <div className="startup-loader" data-phase={phase}>
+    <div className="startup-loader" data-phase={phase} aria-busy="true">
       <div className="startup-loader-top">
         <span dir="ltr">ZARSAZAN BEHRO</span>
         <span className="startup-loader-welcome">آغاز یک همراهی</span>
@@ -98,14 +98,19 @@ export default function StartupLoader() {
         <p className="startup-loader-description">
           از یک انتخاب متمایز، تا تجربه‌ای فراتر از انتظار
         </p>
-        <p className="sr-only" role="status">
-          در حال آماده‌سازی زرسازان بهرو
-        </p>
-        <div className="startup-loader-road" aria-hidden="true">
-          <svg viewBox="0 0 280 70" fill="none" focusable="false">
-            <path d="M18 49h244M46 44l15-22c3-4 8-6 13-6h87c10 0 18 5 25 13l24 7c9 2 14 6 14 13M71 22h82l20 15H57m22 17a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm105 0a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z" />
-          </svg>
-          <span />
+        <div
+          className="startup-loader-loading"
+          role="status"
+          aria-live="polite"
+        >
+          <div className="startup-loader-status">
+            <span className="startup-loader-spinner" aria-hidden="true" />
+            <strong>در حال بارگذاری سایت</strong>
+          </div>
+          <p>لطفاً چند لحظه صبر کنید…</p>
+          <div className="startup-loader-progress" aria-hidden="true">
+            <span />
+          </div>
         </div>
       </div>
       <div className="startup-loader-bottom">
@@ -114,7 +119,7 @@ export default function StartupLoader() {
           مسیر تازه، انتخاب متمایز.
         </p>
         <button type="button" onClick={dismiss}>
-          ورود به سایت <ArrowLeft size={17} />
+          رد کردن و ورود به سایت <ArrowLeft size={17} aria-hidden="true" />
         </button>
       </div>
     </div>

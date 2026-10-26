@@ -21,9 +21,9 @@
 .skeleton-paragraph:last-child { width: 75%; }
 .product-price .skeleton-price { font-size: 36px; font-weight: 800; }
 .skeleton-color { width: 72px; height: 33.6px; border-radius: 8px; }
-.product-purchase-card > .product-cta { background: #e8e5e2; }
-.product-purchase-card > .product-secondary-cta { background: #e8e5e2; }
-.product-purchase-card > .product-email { background: #e8e5e2; }
+.product-purchase-card > .product-cta.skeleton { background: #e8e5e2; }
+.product-purchase-card > .product-secondary-cta.skeleton { background: #e8e5e2; }
+.product-purchase-card > .product-email.skeleton { background: #e8e5e2; }
 .skeleton-avatar { width: 46px; height: 46px; border-radius: 15px; }
 .skeleton-mobile-price { width: 110px; height: 30px; }
 .skeleton-mobile-action { width: 130px; height: 49px; border-radius: 10px; }
@@ -34,7 +34,7 @@
 .skeleton-field-label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 10px; }
 .skeleton-comment-input { height: 54.8px; border-radius: 11px; }
 .skeleton-comment-textarea { height: 170px; border-radius: 11px; }
-.comment-compose > .comment-submit { background: #e8e5e2; }
+.comment-compose > .comment-submit.skeleton { background: #e8e5e2; }
 .skeleton-admin-button { height: 40px; width: 150px; border-radius: 8px; }
 .skeleton-dashboard-action { height: 32px; width: 88px; max-width: 45%; border-radius: 8px; }
 .skeleton-admin-tab { height: 44px; width: 120px; border-radius: 10px; }

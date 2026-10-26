@@ -117,10 +117,10 @@ function mount({
 
 const intro = mount();
 assert.equal(intro.shell.inert, true);
-intro.fire(5000);
+intro.fire(2500);
 assert.equal(intro.phase, "leaving");
 assert.ok(
-  ![...intro.timers.values()].some((timer) => timer.delay === 6500),
+  ![...intro.timers.values()].some((timer) => timer.delay === 3500),
   "Ready completion must cancel the deadline so the intro cannot reopen",
 );
 intro.fire(420);
@@ -129,6 +129,7 @@ assert.equal(intro.shell.inert, false);
 assert.equal(intro.style.overflow, "auto");
 assert.equal(intro.timers.size, 0);
 const repeat = mount({ seen: true });
+repeat.fire(0);
 assert.equal(repeat.phase, "hidden");
 assert.equal(repeat.shell.inert, false);
 assert.equal(repeat.timers.size, 0);
@@ -137,7 +138,7 @@ reduced.fire(350);
 assert.equal(reduced.phase, "hidden");
 assert.equal(reduced.timers.size, 0);
 const slow = mount({ loaded: false });
-slow.fire(6500);
+slow.fire(3500);
 slow.fire(420);
 assert.equal(slow.phase, "hidden");
 assert.equal(slow.listeners.size, 0);
