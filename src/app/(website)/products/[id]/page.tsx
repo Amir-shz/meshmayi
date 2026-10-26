@@ -11,10 +11,6 @@ import "@/styles/comments.css";
 import ProductComments from "@/features/comments/components/ProductComments";
 import { commentPage } from "@/lib/commentValidation";
 
-// @next-codemod-ignore Cache Components adoption: this segment temporarily allows blocking.
-// Remove this opt-out after verifying the segment passes validation without it.
-// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
-export const instant = false;
 
 export default async function CarPage({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ commentsPage?: string }> }) {
   const { id } = await params;
