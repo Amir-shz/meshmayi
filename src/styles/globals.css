@@ -1173,9 +1173,26 @@ html:has(.website-shell) {
   .footer-main {
     grid-template-columns: 1fr;
     gap: 2rem;
+    text-align: center;
   }
   .footer-brand {
     grid-column: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-brand .design-socials {
+    justify-content: center;
+  }
+  .footer-main nav {
+    align-items: center;
+  }
+  .footer-address p {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-address > a {
+    margin-inline: auto;
   }
   .footer-main h2 {
     margin-bottom: 0.8rem;
@@ -1183,6 +1200,9 @@ html:has(.website-shell) {
   .footer-bottom {
     flex-wrap: wrap;
     font-size: 0.75rem;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
   }
   .design-socials {
     gap: 0.5rem;

@@ -13,7 +13,7 @@ interface sliderProps {
 
 function Slider({ pictures, onChangeSlide = () => {} }: sliderProps) {
   function handleSlideChange(e: SwiperClass) {
-    onChangeSlide(e.activeIndex);
+    onChangeSlide(e.realIndex);
   }
 
   return (
@@ -24,7 +24,7 @@ function Slider({ pictures, onChangeSlide = () => {} }: sliderProps) {
         spaceBetween={0}
         grabCursor={true}
         centeredSlides={true}
-        loop={false}
+        loop={pictures.length > 1}
         // autoplay={{
         //   delay: 4000,
         //   disableOnInteraction: false,

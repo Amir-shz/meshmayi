@@ -44,7 +44,7 @@ const { getCar } = load('src/services/apiCars.ts', {
 let galleryState = [0, []];
 let hook = 0;
 const calls = [];
-const instance = { activeIndex: 0, slidePrev: () => calls.push('prev'), slideNext: () => calls.push('next'), slideTo: index => calls.push(index) };
+const instance = { realIndex: 0, slidePrev: () => calls.push('prev'), slideNext: () => calls.push('next'), slideToLoop: index => calls.push(index) };
 const sliderRef = { current: null };
 const Gallery = load('src/features/product/components/ProductImageSlider.tsx', {
   react: { ...React, useRef: () => sliderRef, useState: initial => {
@@ -72,12 +72,14 @@ function nodes(pics = pictures) {
   return result;
 }
 const swiper = nodes().find(node => node.type === 'swiper');
+assert.equal(swiper.props.loop, true);
+assert.equal(nodes(pictures.slice(0, 1)).find(node => node.type === 'swiper').props.loop, false);
 swiper.props.onSwiper(instance);
 nodes().find(node => node.props?.['aria-label'] === 'تصویر قبلی').props.onClick();
 nodes().find(node => node.props?.['aria-label'] === 'تصویر بعدی').props.onClick();
 nodes().find(node => node.props?.['aria-label'] === 'نمایش تصویر ۲').props.onClick();
 assert.deepEqual(calls, ['prev', 'next', 1]);
-swiper.props.onSlideChange({ activeIndex: 1 });
+swiper.props.onSlideChange({ activeIndex: 7, realIndex: 1 });
 assert.equal(galleryState[0], 1);
 assert.deepEqual(changes, [1]);
 assert.equal(nodes().find(node => node.props?.['aria-label'] === 'نمایش تصویر ۲').props['aria-pressed'], true);
@@ -88,3 +90,19 @@ for (const pics of [[], pictures.slice(0, 1), pictures]) {
   assert.ok(nodes(pics).some(node => node.props?.className === 'product-thumbnails'), 'Reserve the thumbnail row for every gallery state');
 }
 console.log('Gallery checks passed: Swiper controls, active slide, thumbnail selection, failed-image and empty fallbacks.');
+
+// Editing a picture must still target the original image after loop rearranges slides.
+const SharedSlider = load('src/components/Slider.tsx', {
+  'swiper/react': { Swiper: 'swiper', SwiperSlide: 'slide' },
+  'swiper/modules': { Autoplay: {}, Navigation: {}, Pagination: {} },
+  'swiper/css': {},
+  '@/components/SliderButton': { NextSliderButton: 'next-button', PrevSliderButton: 'previous-button' },
+  'next/image': 'img',
+}).default;
+let editedImage;
+const shared = SharedSlider({ pictures, onChangeSlide: index => { editedImage = index; } }).props.children;
+assert.equal(shared.props.loop, true);
+shared.props.onSlideChange({ activeIndex: 8, realIndex: 0 });
+assert.equal(editedImage, 0);
+assert.equal(SharedSlider({ pictures: [] }).props.children.props.loop, false);
+console.log('Shared slider passed: infinite loop and original image index for picture editing.');

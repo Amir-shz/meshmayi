@@ -31,11 +31,11 @@ export default function ProductImageSlider({ pictures, name, initialSlide = 0, e
           dir="rtl"
           initialSlide={initialSlide}
           slidesPerView={1}
-          rewind
+          loop={pictures.length > 1}
           grabCursor={pictures.length > 1}
           watchOverflow
           onSwiper={(swiper) => { slider.current = swiper; onSwiper?.(swiper); }}
-          onSlideChange={(swiper) => { setActive(swiper.activeIndex); onActiveChange?.(swiper.activeIndex); }}
+          onSlideChange={(swiper) => { setActive(swiper.realIndex); onActiveChange?.(swiper.realIndex); }}
           className="product-swiper"
         >
           {pictures.map((picture, index) => <SwiperSlide key={picture._id || index}>
@@ -55,7 +55,7 @@ export default function ProductImageSlider({ pictures, name, initialSlide = 0, e
         </div>}
       </div>
       <div className="product-thumbnails" aria-label="انتخاب تصویر">
-        {pictures.map((picture, index) => <button key={picture._id || index} onClick={() => slider.current?.slideTo(index)} aria-label={`نمایش تصویر ${digitsEnToFa(String(index + 1))}`} aria-pressed={active === index}>
+        {pictures.map((picture, index) => <button key={picture._id || index} onClick={() => slider.current?.slideToLoop(index)} aria-label={`نمایش تصویر ${digitsEnToFa(String(index + 1))}`} aria-pressed={active === index}>
           <Image src={picture.src} alt="" fill sizes="120px" unoptimized draggable={false} />
           <span>{digitsEnToFa(String(index + 1)).padStart(2, "۰")}</span>
         </button>)}

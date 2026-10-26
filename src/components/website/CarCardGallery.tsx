@@ -26,13 +26,13 @@ export default function CarCardGallery({ car }: { car: carTypes }) {
         a11y={{ containerMessage: "تصاویر " + car.name }}
         dir="rtl"
         slidesPerView={1}
-        rewind
+        loop={count > 1}
         grabCursor={count > 1}
         watchOverflow
         preventClicks
         preventClicksPropagation
         onSwiper={(swiper) => { slider.current = swiper; }}
-        onSlideChange={(swiper) => setIndex(swiper.activeIndex)}
+        onSlideChange={(swiper) => setIndex(swiper.realIndex)}
         className="vehicle-swiper"
       >{car.pictures.map((picture, i) => <SwiperSlide key={picture._id || i}>
         <Link href={"/products/" + car._id} className="vehicle-image-link" aria-label={"مشاهده " + car.name} draggable={false}>
