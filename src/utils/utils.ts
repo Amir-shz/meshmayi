@@ -1,4 +1,4 @@
-export const PHONE_NUMBER = "09901094933";
+export const PHONE_NUMBER = "09122041873";
 
 export const EMAIL = "Zarsazanbehro@gmail.com";
 
@@ -9,7 +9,7 @@ export const LINKEDIN_LINK =
 
 export const TELEGRAM_LINK = "https://t.me/Agirtav";
 
-export const WHATSAPP_LINK = "https://wa.me/989901094933";
+export const WHATSAPP_LINK = "https://wa.me/989122041873";
 
 export const NAV_ITEMS = [
   { id: "home", title: "صفحه اصلی" },
