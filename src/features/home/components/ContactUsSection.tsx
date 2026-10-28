@@ -1,6 +1,7 @@
 import { ArrowUpLeft, Phone, Mail } from "lucide-react";
 import { PHONE_NUMBER, EMAIL } from "@/utils/utils";
 import SocialLinks from "@/components/website/SocialLinks";
+import { digitsEnToFa } from "@persian-tools/persian-tools";
 
 export default function ContactUsSection() {
   return (
@@ -18,7 +19,7 @@ export default function ContactUsSection() {
             <Phone size={24} />
             <div>
               <span>تماس با مشاوران</span>
-              <strong dir="ltr">۰۹۹۰۱۰۹۴۹۳۳</strong>
+              <strong dir="ltr">{digitsEnToFa(PHONE_NUMBER)}</strong>
             </div>
             <ArrowUpLeft size={21} />
           </a>

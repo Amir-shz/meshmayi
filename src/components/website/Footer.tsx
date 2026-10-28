@@ -3,6 +3,7 @@ import { ArrowUpLeft, Mail, MapPin, Phone } from "lucide-react";
 import { NAV_ITEMS, EMAIL, PHONE_NUMBER } from "@/utils/utils";
 import LogoName from "./LogoName";
 import SocialLinks from "./SocialLinks";
+import { digitsEnToFa } from "@persian-tools/persian-tools";
 
 export default function Footer() {
   return (
@@ -37,7 +38,7 @@ export default function Footer() {
           </p>
           <a href={"tel:" + PHONE_NUMBER} className="footer-contact">
             <Phone size={20} aria-hidden="true" />
-            <span dir="ltr">۰۹۹۰۱۰۹۴۹۳۳</span>
+            <span dir="ltr">{digitsEnToFa(PHONE_NUMBER)}</span>
           </a>
           <a href={"mailto:" + EMAIL} className="footer-contact">
             <Mail size={20} aria-hidden="true" />
